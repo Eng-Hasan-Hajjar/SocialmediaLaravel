@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('you_tube_channels', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('url');
+            $table->text('description')->nullable();
+            $table->integer('subscribers_count');
+            $table->foreignId('category_id')->constrained();
             $table->timestamps();
         });
     }

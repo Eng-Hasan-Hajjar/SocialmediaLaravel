@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('facebook_pages', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('url');
+            $table->text('description')->nullable();
+            $table->integer('followers_count');
+            $table->foreignId('category_id')->constrained();
             $table->timestamps();
         });
     }

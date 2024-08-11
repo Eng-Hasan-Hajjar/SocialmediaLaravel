@@ -11,6 +11,14 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\FleetController;
 use App\Http\Controllers\GarageController;
 use App\Http\Controllers\MaintenanceController;
+
+
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\FacebookPageController;
+use App\Http\Controllers\InstagramAccountController;
+use App\Http\Controllers\YouTubeChannelController;
+use App\Http\Controllers\RecommendationController;
+
 Route::get('/', function () {
     return view('frontend.index');
 });
@@ -99,3 +107,13 @@ Route::patch('/reservations/{reservation}/reject', [CarReservationController::cl
 
 
 Route::get('ratings2', [RatingController::class, 'index'])->name('ratings2.index');
+
+
+
+Route::resource('products', ProductController::class);
+Route::resource('facebook-pages', FacebookPageController::class);
+Route::resource('instagram-accounts', InstagramAccountController::class);
+Route::resource('youtube-channels', YouTubeChannelController::class);
+Route::get('recommendations', [RecommendationController::class, 'index'])->name('recommendations.index');
+
+
