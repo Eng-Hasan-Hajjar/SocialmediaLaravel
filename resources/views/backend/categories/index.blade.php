@@ -1,4 +1,4 @@
-@extends('layouts.backend')
+@extends(Auth::user()->can('isEmployee') || Auth::user()->can('isAdmin') ? 'admin.layouts.layout' : 'admin.layouts.layoutvisitor')
 
 @section('content')
     <h2>Categories</h2>
