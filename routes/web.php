@@ -18,6 +18,9 @@ use App\Http\Controllers\Backend\FacebookPageController;
 use App\Http\Controllers\Backend\InstagramAccountController;
 use App\Http\Controllers\Backend\YouTubeChannelController;
 
+use App\Http\Controllers\Backend\CategoryController;
+
+
 
 
 Route::get('/', function () {
@@ -80,7 +83,10 @@ Route::prefix('backend')->group(function() {
     Route::resource('youtube_channels', YouTubeChannelController::class);
     Route::get('youtube_channels/filter', [YouTubeChannelController::class, 'filter'])->name('youtube_channels.filter');
 
+    Route::resource('categories', CategoryController::class);
+
 
 });
+
 
 

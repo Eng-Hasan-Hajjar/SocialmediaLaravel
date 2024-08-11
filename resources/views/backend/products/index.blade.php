@@ -1,4 +1,5 @@
-@extends('layouts.app')
+
+@extends(Auth::user()->can('isEmployee') || Auth::user()->can('isAdmin') ? 'admin.layouts.layout' : 'admin.layouts.layoutvisitor')
 
 @section('content')
     <div class="container">
