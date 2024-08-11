@@ -2,32 +2,34 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Car;
-use App\Models\CarReservation;
-use App\Models\Garage;
-use App\Models\Maintenance;
+
 use App\Models\User;
-use Illuminate\Http\Request;
+use App\Models\FacebookPage;
+use App\Models\InstagramAccount;
+use App\Models\YouTubeChannel;
+
 
 class AdminDashboardController extends Controller
 {
     public function index()
     {
-
-        // جلب عدد الزبائن
+        // Fetching counts for different user roles
         $customerCount = User::where('role', 'customer')->count();
-        // جلب عدد المدراء
         $adminCount = User::where('role', 'admin')->count();
         $employeeCount = User::where('role', 'employee')->count();
-         // جلب عدد السيارات
-         $carCount = Car::count();
-         $garageCount = Garage::count();
-         $maintenanceCount=Maintenance::count();
-         $activeReservationsCount = CarReservation::where('start_date', '<=', now())
-         ->where('end_date', '>=', now())
-         ->count();
 
-        // تمرير البيانات إلى العرض
-        return view('layouts.appcar', compact('maintenanceCount','customerCount', 'adminCount',  'carCount', 'activeReservationsCount', 'garageCount','employeeCount'));
+
+        // Fetching counts for social media accounts
+        $facebookPageCount = FacebookPage::count();
+        $instagramAccountCount = InstagramAccount::count();
+        $youtubeChannelCount = YouTubeChannel::count();
+
+
+        // Passing all data to the view
+        return view('layouts.app', compact(
+            'customerCount', 'adminCount', 'employeeCount',
+             'facebookPageCount',
+            'instagramAccountCount', 'youtubeChannelCount',
+        ));
     }
 }

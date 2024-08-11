@@ -39,9 +39,7 @@ Route::post('/ratings', [RatingController::class, 'store'])->name('ratings.store
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
 });
-Route::middleware('auth')->group(function () {
-    Route::get('/dashboardcar', [AdminDashboardController::class, 'index'])->name('dashboardcar');
-});
+
 Route::middleware('auth')->group(function () {
     Route::resource('/adminpanel/customers', CustomerController::class);
     Route::post('/adminpanel/customers2', [CustomerController::class, 'input'])->name('customers2.input');

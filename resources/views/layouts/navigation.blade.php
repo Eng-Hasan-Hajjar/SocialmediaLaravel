@@ -58,40 +58,21 @@
 
 
 
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100" style="direction: rtl;text-align:right">
+<nav x-data="{ open: false }" class="bg-white border-b border-gray-100" style="direction: ltr;text-align:left">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboardcar')" :active="request()->routeIs('dashboardcar')">
-                        {{ __('لوحة التحكم') }}
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                        {{ __('dashbord') }}
                     </x-nav-link>
                 </div>
 
                 @if (Auth::user()->can('isEmployee') || Auth::user()->can('isAdmin'))
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('products.index')" :active="request()->routeIs('products.index')">
-                            {{ __('إدارة المنتجات') }}
-                        </x-nav-link>
-                    </div>
 
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('reservations.index')" :active="request()->routeIs('reservations.index')">
-                            {{ __('إدارة الحجوزات للسيارات') }}
-                        </x-nav-link>
-                    </div>
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('maintenances.index')" :active="request()->routeIs('maintenances.index')">
-                            {{ __('إدارة صيانة السيارات') }}
-                        </x-nav-link>
-                    </div>
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('fleets.index')" :active="request()->routeIs('fleets.index')">
-                            {{ __('إدارة أسطول السيارات') }}
-                        </x-nav-link>
-                    </div>
+
                     @if (Auth::user()->can('isAdmin'))
                         <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                             <x-nav-link :href="route('garages.index')" :active="request()->routeIs('garages.index')">
@@ -104,34 +85,34 @@
                 @else
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('categories.index')" :active="request()->routeIs('categories.index')">
-                            {{ __('إدارة الفئات') }}
+                            {{ __('Category Management') }}
                         </x-nav-link>
                     </div>
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('products.index')" :active="request()->routeIs('products.index')">
-                            {{ __('إدارة المنتجات') }}
+                            {{ __('Product Management') }}
                         </x-nav-link>
                     </div>
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('facebook_pages.index')" :active="request()->routeIs('facebook_pages.index')">
-                            {{ __('استعراض صفحات الفيس بوك') }}
+                            {{ __('Browse Facebook Pages') }}
                         </x-nav-link>
                     </div>
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('instagram_accounts.index')" :active="request()->routeIs('instagram_accounts.index')">
-                            {{ __('استعراض صفحات الانستغرام') }}
+                            {{ __('Browse Instagram Pages') }}
                         </x-nav-link>
                     </div>
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('youtube_channels.index')" :active="request()->routeIs('youtube_channels.index')">
-                            {{ __('استعراض قنوات اليوتيوب ') }}
+                            {{ __('Browse YouTube Channels') }}
                         </x-nav-link>
                     </div>
 
 
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('ratings.index')" :active="request()->routeIs('ratings2.index')">
-                            {{ __(' التقييمات ') }}
+                            {{ __(' Ratings ') }}
                         </x-nav-link>
                     </div>
 
@@ -141,14 +122,14 @@
 
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('customers.showByUserId', ['userId' => Auth::user()->id])" :active="request()->routeIs('customers.showByUserId', ['userId' => Auth::user()->id])">
-                            {{ __('معلوماتي') }}
+                            {{ __('My information') }}
                         </x-nav-link>
                     </div>
                 @endif
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="url('/')">
-                        {{ __('الموقع الرئيسي') }}
+                        {{ __('Main site') }}
                     </x-nav-link>
                 </div>
             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
@@ -172,14 +153,14 @@
                                                 @endif
                                             </a>
                                             <div class="dropdown-menu dropdown-menu-right notifications-dropdown" aria-labelledby="notificationsDropdown">
-                                                <h6 class="dropdown-header">الإشعارات</h6>
+                                                <h6 class="dropdown-header">notifications</h6>
                                                 @forelse(Auth::user()->notifications as $notification)
                                                     <a href="#" class="dropdown-item">
                                                         {{ $notification->data['message'] }}
                                                         <br><small class="text-muted">{{ $notification->created_at->diffForHumans() }}</small>
                                                     </a>
                                                 @empty
-                                                    <p class="text-center">لا توجد إشعارات جديدة</p>
+                                                    <p class="text-center"> No new notifications</p>
                                                 @endforelse
                                             </div>
                                         </li>
