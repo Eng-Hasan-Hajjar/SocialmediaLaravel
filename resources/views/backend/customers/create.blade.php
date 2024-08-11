@@ -3,7 +3,7 @@
 @extends('admin.layouts.layout')
 
 @section('title')
-التحكم
+control || add your info
 @endsection
 
 @section('header')
@@ -18,7 +18,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card ">
-                    <div class="card-header ">إنشاء جديد</div>
+                    <div class="card-header ">create new </div>
                         @if ($errors->any())
                         <div class="alert alert-danger">
                         <ul>
@@ -33,46 +33,46 @@
                             @csrf
 
                             <div class="form-group">
-                                <label for="phone">الهاتف  </label>
+                                <label for="phone">phone  </label>
                                 <input type="phone" name="phone" class="form-control" id="phone" value="{{ old('phone') }}">
                             </div>
                             <div class="form-group">
-                                <label for="work">العمل  </label>
+                                <label for="work">work  </label>
                                 <input type="text" name="work" class="form-control" id="work" value="{{ old('work') }}">
                             </div>
 
                             <div class="form-group">
-                                <label for="nationality">الجنسية  </label>
+                                <label for="nationality">nationality  </label>
                                 <input type="text" name="nationality" class="form-control" id="nationality" value="{{ old('nationality') }}">
                             </div>
                             <div class="form-group">
-                                <label for="current_location">الموقع الحالي  </label>
+                                <label for="current_location"> current location  </label>
                                 <input type="text" name="current_location" class="form-control" id="current_location" value="{{ old('current_location') }}">
                             </div>
 
                             <div class="form-group">
-                                <label for="gender"> الجنس </label>
+                                <label for="gender"> gender </label>
                                 <select name="gender" class="form-control" id="gender">
-                                        <option value="0">ذكر </option>
-                                        <option value="1"> أنثى </option>
+                                        <option value="0">male </option>
+                                        <option value="1"> female </option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="birthday">الميلاد  </label>
+                                <label for="birthday">birthday  </label>
                                 <input type="date" name="birthday" class="form-control" id="birthday" value="{{ old('birthday') }}">
                             </div>
                             <div class="form-group">
-                                <label for="driving_license_number">رقم شهادة السواقة</label>
+                                <label for="driving_license_number">driving license number  </label>
                                 <input type="text" class="form-control" name="driving_license_number" id="driving_license_number" required>
                             </div>
 
 
 
-                            <button type="submit" class="btn btn-primary">حفظ </button>
+                            <button type="submit" class="btn btn-primary">save </button>
                                 <!-- زر الرجوع -->
                                 @if(Auth::user()->can('isEmployee') || Auth::user()->can('isAdmin'))
 
-                                        <a href="{{ url('/adminpanel/customers') }}" class="btn btn-secondary" >  الزبائن </a>
+                                        <a href="{{ url('/adminpanel/customers') }}" class="btn btn-secondary" >  customers </a>
                                 @else
 
                                 @endif

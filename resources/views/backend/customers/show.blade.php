@@ -3,7 +3,7 @@
 @extends('admin.layouts.layout')
 
 @section('title')
-    تفاصيل
+    details
 @endsection
 
 @section('header')
@@ -16,28 +16,28 @@
 @section('content')
     <div class="container hcontainer">
         <div class="card hcard">
-            <div class="card-header">التفاصيل </div>
+            <div class="card-header">details </div>
 
             <div class="card-body hcard-body">
                 <!-- تفاصيل  -->
-                <p><strong> الاسم:</strong>  @foreach ($users as $user)
+                <p><strong> name:</strong>  @foreach ($users as $user)
                     @if($user->id == $customer->user_id)  {{ $user->name }} @endif
                 @endforeach</p>
-                <p><strong> الهاتف:</strong> {{ $customer->phone}}</p>
-                <p><strong> العمل:</strong> {{  $customer->work}}</p>
-                <p><strong> الجنسية:</strong> {{ $customer->nationality}}</p>
-                <p><strong> الموقع الحالي:</strong> {{ $customer->current_location}}</p>
-                <p><strong> الجنس:</strong>   @if($customer->gender == 0) ذكر @else أنثى @endif</p>
-                <p><strong> تاريخ الميلاد:</strong> {{ $customer->birthday }}</p>
-                <p><strong> رقم الشهادة:</strong> {{ $customer->driving_license_number}}</p>
+                <p><strong> phone:</strong> {{ $customer->phone}}</p>
+                <p><strong> work:</strong> {{  $customer->work}}</p>
+                <p><strong> nationality:</strong> {{ $customer->nationality}}</p>
+                <p><strong> current location:</strong> {{ $customer->current_location}}</p>
+                <p><strong> gender:</strong>   @if($customer->gender == 0) male @else female @endif</p>
+                <p><strong> birthday:</strong> {{ $customer->birthday }}</p>
+                <p><strong> driving license number:</strong> {{ $customer->driving_license_number}}</p>
                 <div class="btn-group">
-                    <a href="{{ route('customers.edit', $customer) }}" class="btn btn-primary">تعديل</a>
+                    <a href="{{ route('customers.edit', $customer) }}" class="btn btn-primary">edit</a>
                     <form action="{{ route('customers.destroy', $customer) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger"onclick="return confirm('هل أنت متأكد من رغبتك في حذف هذا الزائر؟ ')">حذف</button>
+                        <button type="submit" class="btn btn-danger"onclick="return confirm('Are you sure you want to delete this customer?')">delete</button>
                     </form>
-                    <a href="{{ url('/adminpanel/customers') }}" class="btn btn-secondary">رجوع</a>
+                    <a href="{{ url('/adminpanel/customers') }}" class="btn btn-secondary">customers</a>
 
                 </div>
 

@@ -1,5 +1,5 @@
 .hcontainer {
-    direction: rtl;
+    direction: ltr;
 
     display: flex;
     justify-content: center;
@@ -13,30 +13,30 @@
 .hcard {
     width: 70%;
     margin-top: 50px;
-    direction: rtl;
+    direction: ltr;
 }
 .hcardcreat {
     width: 100%;
     margin-top: 50px;
-    direction: rtl;
+    direction: ltr;
 }
 .helement{
-    text-align: right;
+    text-align: left;
     width: 70%;
     padding-top: 20px;
-    direction: rtl;
+    direction: ltr;
 }
 .helementedit{
-    text-align: right;
+    text-align: left;
     width: 100%;
-    direction: rtl;
+    direction: ltr;
     padding-top: 20px;
 }
 
 
 table {
     direction: rtl;
-    text-align: right;
+    text-align: left;
 
     border-collapse: collapse;
     width: 100%;
@@ -44,8 +44,8 @@ table {
   }
 
   th, td {
-    direction: rtl;
-    text-align: right;
+    direction: ltr;
+    text-align: left;
 
     padding: 8px;
   }

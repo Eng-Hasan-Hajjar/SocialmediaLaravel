@@ -4,7 +4,7 @@
 @extends(Auth::user()->can('isEmployee') || Auth::user()->can('isAdmin') ? 'admin.layouts.layout' : 'admin.layouts.layoutvisitor')
 
 @section('title')
-   التعديل
+   edit
 @endsection
 
 @section('header')
@@ -16,55 +16,55 @@
 @section('content')
     <div class="container helementedit">
         <div class="card ">
-            <div class="card-header">تعديل </div>
+            <div class="card-header">edit </div>
 
             <div class="card-body">
                 <form method="POST" action="{{ route('customers.update', $customer) }}">
                     @csrf
                     @method('PUT')
                     <div class="form-group">
-                        <label for="phone">الهاتف  </label>
+                        <label for="phone">phone:  </label>
                         <input type="phone" name="phone" class="form-control" id="phone" value="{{$customer->phone }}">
                     </div>
 
                     <div class="form-group">
-                        <label for="work">العمل  </label>
+                        <label for="work">work:  </label>
                         <input type="text" name="work" class="form-control" id="work" value="{{ $customer->work }}">
                     </div>
                     <div class="form-group">
-                        <label for="nationality">الجنسية  </label>
+                        <label for="nationality">nationality:  </label>
                         <input type="text" name="nationality" class="form-control" id="nationality" value="{{$customer->nationality  }}">
                     </div>
                     <div class="form-group">
-                        <label for="current_location">الموقع الحالي  </label>
+                        <label for="current_location">current location:   </label>
                         <input type="text" name="current_location" class="form-control" id="current_location" value="{{$customer->current_location }}">
                     </div>
 
                     <div class="form-group">
-                        <label for="gender"> الجنس </label>
+                        <label for="gender"> gender: </label>
                         <select name="gender" class="form-control" id="gender">
-                                <option value="0" {{ $customer->gender == '0' ? 'selected' : '' }}>ذكر </option>
-                                <option value="1" {{ $customer->gender == '1' ? 'selected' : '' }}> أنثى </option>
+                                <option value="0" {{ $customer->gender == '0' ? 'selected' : '' }}>male </option>
+                                <option value="1" {{ $customer->gender == '1' ? 'selected' : '' }}> female </option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="birthday">الميلاد  </label>
+                        <label for="birthday">birthday:  </label>
                         <input type="date" name="birthday" class="form-control" id="birthday" value="{{$customer->birthday  }}">
                     </div>
                     <div class="form-group">
-                        <label for="driving_license_number">رقم شهادة السواقة</label>
+                        <label for="driving_license_number">driving license number:  </label>
                         <input type="text" class="form-control" name="driving_license_number" id="driving_license_number"value="{{$customer->driving_license_number  }}" required>
                     </div>
 
 
 
-                    <button type="submit" class="btn btn-primary">حفظ </button>
+                    <button type="submit" class="btn btn-primary"> save </button>
                     <!-- زر الرجوع -->
                     @if(Auth::user()->can('isEmployee') || Auth::user()->can('isAdmin'))
 
-                          <a href="{{ url('/adminpanel/customers') }}" class="btn btn-secondary" >  الزبائن </a>
+                          <a href="{{ url('/adminpanel/customers') }}" class="btn btn-secondary" >  customers </a>
                     @else
-                         <a href="{{ url('/dashboard') }}" class="btn btn-secondary" >  رجوع </a>
+                         <a href="{{ url('/dashboard') }}" class="btn btn-secondary" >  dashboard </a>
 
                     @endif
 

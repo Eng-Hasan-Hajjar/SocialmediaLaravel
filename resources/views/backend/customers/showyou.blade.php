@@ -3,7 +3,7 @@
 @extends('admin.layouts.layoutvisitor')
 
 @section('title')
-    تفاصيل
+    details
 @endsection
 
 @section('header')
@@ -16,25 +16,25 @@
 @section('content')
     <div class="container hcontainer">
         <div class="card hcard">
-            <div class="card-header">التفاصيل </div>
+            <div class="card-header"> details </div>
 
             <div class="card-body hcard-body">
                 <table>
                     <tr>
                     <td>
-                            <p><strong> الاسم:</strong>
+                            <p><strong> name:</strong>
                                 {{ Auth::user()->name }}
                            </p>
                     </td>
                     <td>
-                            <p><strong> الهاتف:</strong> {{ $customer->phone}}</p>
+                            <p><strong> phone:</strong> {{ $customer->phone}}</p>
                     </td>
 
                     </tr>
                     <tr>
                     <td>
 
-                             <p><strong> العمل:</strong> {{  $customer->work}}</p>
+                             <p><strong> work:</strong> {{  $customer->work}}</p>
                     </td>
                     <td>
 
@@ -43,38 +43,26 @@
                     </tr>
                     <tr>
                     <td>
-                            <p><strong> الجنسية:</strong> {{ $customer->nationality}}</p>
+                            <p><strong> nationality:</strong> {{ $customer->nationality}}</p>
                     </td>
                         <td>
 
-                <p><strong> الموقع الحالي:</strong> {{ $customer->current_location}}</p>
-                    </td>
-
-                    </tr>
-                    <tr>
-                        <td>
-                            <p><strong> الجنس:</strong> @if($customer->gender == 0) ذكر @else أنثى @endif</p>
-                    </td>
-                        <td>
+                <p><strong> current location :</strong> {{ $customer->current_location}}</p>
                     </td>
 
                     </tr>
                     <tr>
-
                         <td>
-                            <p><strong> تاريخ الميلاد:</strong> {{ $customer->birthday }}</p>
-
-                        </td>
+                            <p><strong> gender:</strong> @if($customer->gender == 0) ذكر @else أنثى @endif</p>
+                    </td>
                         <td>
-
-                        </td>
+                    </td>
 
                     </tr>
-
                     <tr>
 
                         <td>
-                            <p><strong>  رقم شهادة السواقة:</strong> {{ $customer->driving_license_number }}</p>
+                            <p><strong> birthday:</strong> {{ $customer->birthday }}</p>
 
                         </td>
                         <td>
@@ -82,6 +70,8 @@
                         </td>
 
                     </tr>
+
+
 
 
 
@@ -95,9 +85,9 @@
 
 
                 <div class="btn-group">
-                    <a href="{{ route('customers.edit', $customer) }}" class="btn btn-primary">تعديل</a>
+                    <a href="{{ route('customers.edit', $customer) }}" class="btn btn-primary">edit</a>
 
-                    <a href="{{ url('dashboard') }}" class="btn btn-secondary">رجوع</a>
+                    <a href="{{ url('dashboard') }}" class="btn btn-secondary">dashboard</a>
 
                 </div>
 

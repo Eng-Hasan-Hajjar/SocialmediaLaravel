@@ -4,7 +4,7 @@
 @extends(Auth::user()->can('isEmployee') || Auth::user()->can('isAdmin') ? 'admin.layouts.layout' : 'admin.layouts.layoutvisitor')
 
 @section('title')
-    التحكم
+    control
 @endsection
 
 @section('header')
@@ -15,21 +15,21 @@
 @section('content')
     <div class="container hcontainer" style="direction: rtl;">
         <div class="card hcard helement hcard-body">
-            <div class="card-header  "><p  class="float-right">جميع الزبائن</p></div>
+            <div class="card-header  "><p  class="float-right">all customers </p></div>
             <div class="card-header">
-                <a href="{{ route('dashboard') }}" class="btn btn-primary"> لوجة التحكم  </a>
+                <a href="{{ route('dashboard') }}" class="btn btn-primary"> dashboard   </a>
 
-                <a href="{{ route('customers.create') }}" class=" btn btn-success float-right">إنشاء جديد</a>
+                <a href="{{ route('customers.create') }}" class=" btn btn-success float-right">create new </a>
             </div>
             <div class="card-body">
                 <table class="table">
                     <thead>
                         <tr>
-                            <th> الاسم</th>
-                            <th> الهاتف</th>
-                            <th> العمل</th>
-                            <th> الموقع الحالي</th>
-                            <th>التحكم</th>
+                            <th> name</th>
+                            <th> phone</th>
+                            <th> work</th>
+                            <th> current location </th>
+                            <th>control </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -46,13 +46,13 @@
 
                                 <td>
                                     <div class="btn-group">
-                                        <a style="" href="{{ route('customers.show', $customer) }}" class="btn btn-info"> التفاصيل</a>
+                                        <a style="" href="{{ route('customers.show', $customer) }}" class="btn btn-info"> details</a>
 
-                                        <a style="" href="{{ route('customers.edit', $customer) }}" class="btn btn-primary">تعديل</a>
+                                        <a style="" href="{{ route('customers.edit', $customer) }}" class="btn btn-primary">edit</a>
                                         <form action="{{ route('customers.destroy', $customer) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger"onclick="return confirm('هل أنت متأكد من رغبتك في حذف هذا الزبون ')">حذف</button>
+                                            <button type="submit" class="btn btn-danger"onclick="return confirm('Are you sure you want to delete this customer?')">delete</button>
                                         </form>
 
                                     </div>
