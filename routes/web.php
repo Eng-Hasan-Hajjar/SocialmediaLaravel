@@ -2,16 +2,12 @@
 use App\Http\Controllers\AdminDashboardCarController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\App;
+
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\AdminDashboardController;
 
-use App\Http\Controllers\CarController;
-use App\Http\Controllers\CarReservationController;
+
 use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\FleetController;
-use App\Http\Controllers\GarageController;
-use App\Http\Controllers\MaintenanceController;
 
 
 use App\Http\Controllers\RecommendationController;

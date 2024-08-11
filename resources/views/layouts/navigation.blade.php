@@ -72,8 +72,8 @@
 
                 @if (Auth::user()->can('isEmployee') || Auth::user()->can('isAdmin'))
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('car.index')" :active="request()->routeIs('car.index')">
-                            {{ __('إدارة السيارات') }}
+                        <x-nav-link :href="route('products.index')" :active="request()->routeIs('products.index')">
+                            {{ __('إدارة المنتجات') }}
                         </x-nav-link>
                     </div>
 
@@ -103,14 +103,29 @@
                     <!-- روابط العملاء -->
                 @else
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('car.index')" :active="request()->routeIs('car.index')">
-                            {{ __('استعراض السيارات والحجز') }}
+                        <x-nav-link :href="route('products.index')" :active="request()->routeIs('products.index')">
+                            {{ __('إدارة المنتجات') }}
+                        </x-nav-link>
+                    </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('facebook_pages.index')" :active="request()->routeIs('facebook_pages.index')">
+                            {{ __('استعراض صفحات الفيس بوك') }}
+                        </x-nav-link>
+                    </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('instagram_accounts.index')" :active="request()->routeIs('instagram_accounts.index')">
+                            {{ __('استعراض صفحات الانستغرام') }}
+                        </x-nav-link>
+                    </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('youtube_channels.index')" :active="request()->routeIs('youtube_channels.index')">
+                            {{ __('استعراض قنوات اليوتيوب ') }}
                         </x-nav-link>
                     </div>
 
 
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('ratings2.index')" :active="request()->routeIs('ratings2.index')">
+                        <x-nav-link :href="route('ratings.index')" :active="request()->routeIs('ratings2.index')">
                             {{ __(' التقييمات ') }}
                         </x-nav-link>
                     </div>
