@@ -50,40 +50,6 @@
         </div>
     </div>
 
-    <!-- Place your script at the end of the body -->
-    <script>
-        document.getElementById('backgroundColorPicker').addEventListener('input', function(event) {
-            document.body.style.backgroundColor = event.target.value;
-            localStorage.setItem('backgroundColor', event.target.value);
-        });
 
-        document.addEventListener('DOMContentLoaded', function() {
-            const savedColor = localStorage.getItem('backgroundColor');
-            if (savedColor) {
-                document.body.style.backgroundColor = savedColor;
-                document.getElementById('backgroundColorPicker').value = savedColor;
-            }
-        });
-
-
-
-        document.getElementById('whiteButton').addEventListener('click', function(event) {
-            document.body.style.backgroundColor = '#ffffff';
-            localStorage.setItem('backgroundColor', '#ffffff');
-        });
-
-        document.getElementById('blackButton').addEventListener('click', function(event) {
-            document.body.style.backgroundColor = '#000000';
-            localStorage.setItem('backgroundColor', '#000000');
-        });
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const savedColor = localStorage.getItem('backgroundColor');
-            if (savedColor) {
-                document.body.style.backgroundColor = savedColor;
-            }
-        });
-
-    </script>
 </body>
 </html>

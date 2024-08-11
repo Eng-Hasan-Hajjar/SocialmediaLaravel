@@ -14,14 +14,13 @@ use App\Http\Controllers\GarageController;
 use App\Http\Controllers\MaintenanceController;
 
 
-use App\Http\Controllers\YouTubeChannelController;
 use App\Http\Controllers\RecommendationController;
 
 
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\FacebookPageController;
 use App\Http\Controllers\Backend\InstagramAccountController;
-
+use App\Http\Controllers\Backend\YouTubeChannelController;
 
 
 
@@ -82,6 +81,8 @@ Route::prefix('backend')->group(function() {
     Route::resource('instagram_accounts', InstagramAccountController::class);
     Route::get('instagram_accounts/filter', [InstagramAccountController::class, 'filter'])->name('instagram_accounts.filter');
 
+    Route::resource('youtube_channels', YouTubeChannelController::class);
+    Route::get('youtube_channels/filter', [YouTubeChannelController::class, 'filter'])->name('youtube_channels.filter');
 
 
 });
