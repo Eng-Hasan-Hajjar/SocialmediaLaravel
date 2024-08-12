@@ -1,25 +1,30 @@
 {{-- website --}}
 
-<li class="nav-item has-treeview navbar-white">
+
+  <li class="nav-item has-treeview">
     <a href="#" class="nav-link">
-      <i class="nav-icon fas fa-globe"></i>
+        <i class="nav-icon fas fa-globe"></i>
+
       <p>
-        الموقع
-        <i class="fas fa-angle-left right"></i>
+        <i class="fas fa-angle-right left"></i>
+
+        website
       </p>
+
     </a>
     <ul class="nav nav-treeview">
       <li class="nav-item">
         <a href="{{url('/')}}" class="nav-link">
-          <i class="far fa-circle nav-icon"></i>
-          <p>الصفحة الرئيسية</p>
+
+            <i class="far fa-circle nav-icon"></i>
+            <p>home</p>
+
         </a>
       </li>
 
 
     </ul>
   </li>
-
 
 
 
@@ -30,81 +35,167 @@
 
 <li class="nav-item has-treeview">
     <a href="#" class="nav-link">
-      <i class="nav-icon fas fa-users"></i>
+        <i class="nav-icon fas fa-users"></i>
+
       <p>
-       الزبائن
-        <i class="fas fa-angle-left right"></i>
+        <i class="fas fa-angle-right left"></i>
+
+       customers
+
       </p>
+
     </a>
     <ul class="nav nav-treeview">
       <li class="nav-item">
         <a href="{{url('/adminpanel/customers/create')}}" class="nav-link">
-          <i class="far fa-circle nav-icon"></i>
-          <p>إضافة  زبون </p>
+
+            <i class="far fa-circle nav-icon"></i>
+            <p>create new</p>
+
         </a>
       </li>
       <li class="nav-item">
         <a href="{{url('/adminpanel/customers/')}}" class="nav-link">
-          <i class="far fa-circle nav-icon"></i>
-          <p>كل  الزبائن</p>
+
+            <i class="far fa-circle nav-icon"></i>
+            <p>all customers</p>
+
         </a>
       </li>
 
     </ul>
   </li>
-
-
-
-{{-- cars --}}
+{{-- Categories --}}
 
 
 <li class="nav-item has-treeview">
     <a href="#" class="nav-link">
-      <i class="nav-icon fas fa-car"></i>
+        <i class="nav-icon fas fa-list"></i>
+        <i class="fas fa-angle-right left "></i>
+
       <p>
-         السيارات
-        <i class="fas fa-angle-left right"></i>
+       Categories
       </p>
+
     </a>
+
     <ul class="nav nav-treeview">
       <li class="nav-item">
-        <a href="{{url('/adminpanel/car/create')}}" class="nav-link">
+        <a href="{{url('/backend/categories/create')}}" class="nav-link">
+
           <i class="far fa-circle nav-icon"></i>
-          <p>إضافة  سيارة </p>
+          <p>Create Category   </p>
+
         </a>
       </li>
       <li class="nav-item">
-        <a href="{{url('/adminpanel/car/')}}" class="nav-link">
+        <a href="{{url('/backend/categories')}}" class="nav-link">
+
           <i class="far fa-circle nav-icon"></i>
-          <p>كل  السيارات</p>
+          <p>All Categories  </p>
+
         </a>
       </li>
 
     </ul>
   </li>
 
-{{-- garages --}}
+
+
+  {{-- Categories --}}
+
+
+<li class="nav-item has-treeview">
+    <a href="#" class="nav-link">
+      <p>
+        <i class="nav-icon fas fa-box"></i>
+        <i class="fas fa-angle-right left"></i>
+
+        Products
+
+      </p>
+    </a>
+    <ul class="nav nav-treeview">
+      <li class="nav-item">
+        <a href="{{url('/backend/products/create')}}" class="nav-link">
+            <i class="far fa-circle nav-icon"></i>
+
+          <p> Create Product    </p>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="{{url('/backend/products')}}" class="nav-link">
+            <i class="far fa-circle nav-icon"></i>
+
+          <p>All Products  </p>
+        </a>
+      </li>
+
+    </ul>
+  </li>
+
+
+
+
+{{--  Facebook Pages --}}
+
+
+<li class="nav-item has-treeview">
+    <a href="#" class="nav-link">
+      <p>
+        <i class="nav-icon fab fa-facebook"></i>
+        <i class="fas fa-angle-right left"></i>
+
+        Facebook Pages
+
+      </p>
+
+    </a>
+    <ul class="nav nav-treeview">
+      <li class="nav-item">
+        <a href="{{url('/backend/facebook_pages/create')}}" class="nav-link">
+            <i class="far fa-circle nav-icon"></i>
+
+          <p>Create Facebook Page   </p>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="{{url('/backend/facebook_pages')}}" class="nav-link">
+            <i class="far fa-circle nav-icon"></i>
+
+          <p>All Facebook Pages  </p>
+        </a>
+      </li>
+
+    </ul>
+  </li>
+
+{{--  Instagram Accounts --}}
 @if (Auth::user()->can('isAdmin'))
 
 <li class="nav-item has-treeview">
     <a href="#" class="nav-link">
-      <i class="nav-icon fas fa-cogs"></i>
       <p>
-         الكراجات
-        <i class="fas fa-angle-left right"></i>
+        <i class="nav-icon fab fa-instagram"></i>
+        <i class="fas fa-angle-right left"></i>
+
+         Instagram Accounts
+
       </p>
     </a>
     <ul class="nav nav-treeview">
       <li class="nav-item">
-        <a href="{{url('/adminpanel/garages/create')}}" class="nav-link">
-          <i class="far fa-circle nav-icon"></i>
-          <p>إضافة  كراج </p>
+        <a href="{{url('/backend/instagram_accounts/create')}}" class="nav-link">
+            <i class=" fab fa-youtube-squaree nav-icon"></i>
+
+          <p>Create Instagram Account   </p>
         </a>
       </li>
       <li class="nav-item">
-        <a href="{{url('/adminpanel/garages/')}}" class="nav-link">
-          <i class="far fa-circle nav-icon"></i>
-          <p>كل  الكراجات</p>
+        <a href="{{url('/backend/instagram_accounts')}}" class="nav-link">
+            <i class="far fa-circle nav-icon"></i>
+
+          <p>All Instagram Account  </p>
         </a>
       </li>
 
@@ -116,28 +207,32 @@
 
 
 
-{{-- maintenances --}}
+{{--   YouTube Channels --}}
 
 
 <li class="nav-item has-treeview">
     <a href="#" class="nav-link">
-      <i class="nav-icon fas fa-tools"></i>
       <p>
-         الصيانات
-        <i class="fas fa-angle-left right"></i>
-      </p>
+        <i class="nav-icon fab fa-youtube"></i>
+        <i class="fas fa-angle-right left"></i>
+
+         YouTube Channels
+
+    </p>
     </a>
     <ul class="nav nav-treeview">
       <li class="nav-item">
-        <a href="{{url('/adminpanel/maintenances/create')}}" class="nav-link">
-          <i class="far fa-circle nav-icon"></i>
-          <p>إضافة  صيانة </p>
+        <a href="{{url('/backend/youtube_channels/create')}}" class="nav-link">
+            <i class="far fa-circle nav-icon"></i>
+
+          <p>Create YouTube Channel   </p>
         </a>
       </li>
       <li class="nav-item">
-        <a href="{{url('/adminpanel/maintenances/')}}" class="nav-link">
-          <i class="far fa-circle nav-icon"></i>
-          <p>كل  الصيانات</p>
+        <a href="{{url('/backend/youtube_channels')}}" class="nav-link">
+            <i class="far fa-circle nav-icon"></i>
+
+          <p>All YouTube Channels  </p>
         </a>
       </li>
 
@@ -145,62 +240,7 @@
   </li>
 
 
-{{-- Guides --}}
 
-
-<li class="nav-item has-treeview">
-    <a href="#" class="nav-link">
-      <i class="nav-icon fas fa-calendar-alt"></i>
-      <p>
-         الحجوزات
-        <i class="fas fa-angle-left right"></i>
-      </p>
-    </a>
-    <ul class="nav nav-treeview">
-      <li class="nav-item">
-        <a href="{{url('/reservations/create')}}" class="nav-link">
-          <i class="far fa-circle nav-icon"></i>
-          <p>إضافة  حجز </p>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a href="{{url('/reservations')}}" class="nav-link">
-          <i class="far fa-circle nav-icon"></i>
-          <p>كل  الحجوزات</p>
-        </a>
-      </li>
-
-    </ul>
-  </li>
-
-
-{{-- Guides --}}
-
-
-<li class="nav-item has-treeview">
-    <a href="#" class="nav-link">
-      <i class="nav-icon fas fa-truck"></i>
-      <p>
-         الأساطيل
-        <i class="fas fa-angle-left right"></i>
-      </p>
-    </a>
-    <ul class="nav nav-treeview">
-      <li class="nav-item">
-        <a href="{{url('/adminpanel/cars/create')}}" class="nav-link">
-          <i class="far fa-circle nav-icon"></i>
-          <p>إضافة  أسطول </p>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a href="{{url('/adminpanel/cars/')}}" class="nav-link">
-          <i class="far fa-circle nav-icon"></i>
-          <p>كل  الأساطيل</p>
-        </a>
-      </li>
-
-    </ul>
-  </li>
 
 
 
@@ -208,10 +248,13 @@
 
             <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-circle text-danger"></i>
+
               <p>
-             <!--  {Auth::user()->name}}-->
-                <i class="fas fa-angle-left right"></i>
+             <!--  -->
+             <i class="nav-icon fas fa-circle text-danger"></i>
+
+                <i class="fas fa-angle-right left"></i>
+               {{Auth::user()->name}}
               </p>
             </a>
             <ul class="nav nav-treeview">

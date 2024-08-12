@@ -55,12 +55,12 @@
 
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed" style=" direction: rtl;text-align:right">
+<body class="hold-transition sidebar-mini layout-fixed" >
 
         <div class="wrapper">
 
                     <!-- Navbar -->
-                    <nav class="main-header navbar navbar-expand navbar-dark navbar-light">
+                    <nav class="main-header navbar navbar-expand navbar-light navbar-light">
                     <!--  Left navbar links -->
                         <ul class="navbar-nav">
                         <!--<li class="nav-item">
@@ -79,7 +79,7 @@
 
 
                     <!-- Main Sidebar Container -->
-                    <aside class="main-sidebar sidebar-light elevation-4 navbar-dark" style=" direction: rtl;text-align:center">
+                    <aside class="main-sidebar sidebar-light elevation-4 navbar-light" >
                         <!-- Brand Logo -->
                         <a href="{{url('/dashboard')}}" class="brand-link">
                         <img src="{{Request::root()}}/admin/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
@@ -89,10 +89,10 @@
 
 
                         <!-- Sidebar -->
-                        <div class="sidebar navbar-dark" >
+                        <div class="sidebar navbar-light" >
                         <!-- Sidebar Menu -->
                         <nav class="mt-2" >
-                            <ul class="nav nav-pills nav-sidebar navbar-dark flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                            <ul class="nav nav-pills nav-sidebar navbar-light flex-column" data-widget="treeview" role="menu" data-accordion="false">
                                                 @include('/admin/layouts/nav')
                             </ul>
                         </nav>

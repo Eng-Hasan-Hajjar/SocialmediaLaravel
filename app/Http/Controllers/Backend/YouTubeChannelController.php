@@ -12,7 +12,8 @@ class YouTubeChannelController extends Controller
     public function index()
     {
         $youtubeChannels = YouTubeChannel::with('category')->get();
-        return view('backend.youtube_channels.index', compact('youtubeChannels'));
+        $categories = Category::all();
+        return view('backend.youtube_channels.index', compact('youtubeChannels','categories'));
     }
 
     public function create()
@@ -80,7 +81,7 @@ class YouTubeChannelController extends Controller
         }
 
         $youtubeChannels = $query->with('category')->get();
-
-        return view('backend.youtube_channels.index', compact('youtubeChannels'));
+      //  $categories  = Category::all();
+        return view('backend.youtube_channels.index', compact('youtubeChannels',));
     }
 }

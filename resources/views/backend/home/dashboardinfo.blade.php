@@ -299,10 +299,10 @@
                     <a href="{{ route('categories.create') }}" class="btn btn-success btn-block action-button">Create Categories</a>
                 </div>
                 <div class="col-md-2">
-                    <a href="{{ route('products.create', ['car' => 1]) }}" class="btn btn-danger btn-block action-button">Create Products</a>
+                    <a href="{{ route('products.create') }}" class="btn btn-danger btn-block action-button">Create Products</a>
                 </div>
                 <div class="col-md-2">
-                    <a href="{{ route('youtube_channels.create', ['car' => 1]) }}" class="btn btn-warning btn-block action-button">Create YouTube Channels</a>
+                    <a href="{{ route('youtube_channels.create') }}" class="btn btn-warning btn-block action-button">Create YouTube Channels</a>
                 </div>
                 <div class="col-md-2">
                     <a href="{{ route('instagram_accounts.create') }}" class="btn btn-info btn-block action-button">Create Instagram Accounts</a>
