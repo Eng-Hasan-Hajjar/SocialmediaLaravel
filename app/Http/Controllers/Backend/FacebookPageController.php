@@ -11,8 +11,10 @@ class FacebookPageController extends Controller
 {
     public function index()
     {
+        $categories = Category::all();
+
         $facebookPages = FacebookPage::with('category')->get();
-        return view('backend.facebook_pages.index', compact('facebookPages'));
+        return view('backend.facebook_pages.index', compact('facebookPages','categories'));
     }
 
     public function create()

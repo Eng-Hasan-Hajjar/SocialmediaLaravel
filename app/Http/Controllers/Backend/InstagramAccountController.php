@@ -11,8 +11,9 @@ class InstagramAccountController extends Controller
 {
     public function index()
     {
+        $categories = Category::all();
         $instagramAccounts = InstagramAccount::with('category')->get();
-        return view('backend.instagram_accounts.index', compact('instagramAccounts'));
+        return view('backend.instagram_accounts.index', compact('instagramAccounts','categories'));
     }
 
     public function create()
