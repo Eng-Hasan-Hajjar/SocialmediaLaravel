@@ -3,8 +3,9 @@
 
 @section('content')
     <div class="container">
-        <h1>المنتجات </h1>
-        <a href="{{ route('products.create') }}" class="btn btn-primary mb-3">إضافة جديد  </a>
+        <h1> products </h1>
+        <a href="{{ route('products.create') }}" class="btn btn-primary mb-3">create new   </a>
+        <a href="{{ route('dashboard') }}" class="btn btn-primary mb-3">dashboard   </a>
 
         @if(session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>
@@ -13,10 +14,10 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th >  الاسم</th>
-                    <th>   الفئة </th>
-                    <th>   الصورة  </th>
-                    <th>  التحكم </th>
+                    <th >  name</th>
+                    <th>   category </th>
+                    <th>   image  </th>
+                    <th>  control </th>
                 </tr>
             </thead>
             <tbody>

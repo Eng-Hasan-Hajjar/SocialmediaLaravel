@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>
 
-   لوحة التحكم
+  control panel
     |
     @yield('title')
 
@@ -68,7 +68,7 @@
                         </li>
                         -->
                         <li class="nav-item d-none d-sm-inline-block">
-                            <a href="/dashboard" class="nav-link"> الرئيسية </a>
+                            <a href="/dashboard" class="nav-link"> Dashboard </a>
                         </li>
 
                         </ul>
@@ -84,7 +84,7 @@
                         <a href="{{url('/dashboard')}}" class="brand-link">
                         <img src="{{Request::root()}}/admin/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                             style="opacity: .8">
-                        <span class="brand-text font-weight-light">  يلا سيارة </span>
+                        <span class="brand-text font-weight-light">  Impact Makers</span>
                         </a>
 
 

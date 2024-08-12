@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>
 
-   لوحة التحكم
+  control panel
     |
     @yield('title')
 
