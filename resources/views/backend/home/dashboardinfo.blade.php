@@ -4,12 +4,13 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
     <style>
-        /* تنسيق إشعارات التنقل */
+        /* تنسيق التنقل */
         .navbar .dropdown-menu {
             left: auto;
             right: 0;
         }
 
+        /* تنسيق أيقونة الإشعارات */
         .notification-icon {
             position: relative;
             cursor: pointer;
@@ -31,23 +32,27 @@
             border: none;
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .card:hover {
             transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
         }
 
         .card-title {
             font-size: 1.5rem;
             font-weight: bold;
+            margin-bottom: 15px;
         }
 
         .card-text {
             font-size: 2.5rem;
             font-weight: bold;
+            color: #fff;
         }
 
+        /* تخصيص ألوان الخلفية للبطاقات */
         .bg-facebook {
             background-color: #3b5998;
         }
@@ -60,9 +65,29 @@
             background-color: #ff0000;
         }
 
+        /* تخصيص نمط الأيقونات */
         .icon {
             font-size: 2rem;
             margin-right: 10px;
+        }
+
+        /* تخصيص أزرار القسم */
+        .action-button {
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .action-button:hover {
+            background-color: #d9534f;
+            transform: translateY(-2px);
+        }
+
+        .action-button i {
+            margin-right: 5px;
+        }
+
+        /* تحسين التباعد بين الأعمدة */
+        .row > [class*='col-'] {
+            margin-bottom: 15px;
         }
     </style>
 </head>
@@ -84,55 +109,59 @@
     <!-- قسم عرض الإحصائيات -->
     <div class="container mt-5">
         <div class="row text-center">
-            <div class="col-md-4 mb-4">
+            <!-- بطاقة العملاء -->
+            <div class="col-md-4">
                 <div class="card text-white bg-primary">
                     <div class="card-body">
-                        <h5 class="card-title">Customers<i class="fas fa-user-tie icon"></i> </h5>
+                        <h5 class="card-title">Customers<i class="fas fa-user-tie icon"></i></h5>
                         <p class="card-text">{{ $customerCount }}</p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4 mb-4">
+            <!-- بطاقة المشرفين -->
+            <div class="col-md-4">
                 <div class="card text-white bg-secondary">
                     <div class="card-body">
-                        <h5 class="card-title">Admins<i class="fas fa-user-shield icon"></i> </h5>
+                        <h5 class="card-title">Admins<i class="fas fa-user-shield icon"></i></h5>
                         <p class="card-text">{{ $adminCount }}</p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4 mb-4">
+            <!-- بطاقة الموظفين -->
+            <div class="col-md-4">
                 <div class="card text-white bg-info">
                     <div class="card-body">
-                        <h5 class="card-title">Employees<i class="fas fa-users icon"></i> </h5>
+                        <h5 class="card-title">Employees<i class="fas fa-users icon"></i></h5>
                         <p class="card-text">{{ $employeeCount }}</p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4 mb-4">
+            <!-- بطاقات مواقع التواصل الاجتماعي -->
+            <div class="col-md-4">
                 <div class="card text-white bg-facebook">
                     <div class="card-body">
-                        <h5 class="card-title">Facebook Pages<i class="fab fa-facebook icon"></i> </h5>
+                        <h5 class="card-title">Facebook Pages<i class="fab fa-facebook icon"></i></h5>
                         <p class="card-text">{{ $facebookPageCount }}</p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4 mb-4">
+            <div class="col-md-4">
                 <div class="card text-white bg-instagram">
                     <div class="card-body">
-                        <h5 class="card-title">Instagram Accounts<i class="fab fa-instagram icon"></i> </h5>
+                        <h5 class="card-title">Instagram Accounts<i class="fab fa-instagram icon"></i></h5>
                         <p class="card-text">{{ $instagramAccountCount }}</p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4 mb-4">
+            <div class="col-md-4">
                 <div class="card text-white bg-youtube">
                     <div class="card-body">
-                        <h5 class="card-title">YouTube Channels<i class="fab fa-youtube icon"></i> </h5>
+                        <h5 class="card-title">YouTube Channels<i class="fab fa-youtube icon"></i></h5>
                         <p class="card-text">{{ $youtubeChannelCount }}</p>
                     </div>
                 </div>
@@ -140,24 +169,146 @@
         </div>
     </div>
 
+ <!-- قسم الإجراءات -->
+<div class="container mt-4 text-center">
+    @if(!(Auth::user()->can('isEmployee') || Auth::user()->can('isAdmin')))
+        <div class="row justify-content-center">
+            <!-- زر تسجيل الخروج -->
+            <div class="col-md-2 mb-4">
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button class="btn btn-logout action-button" type="submit">
+                        Log Out <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </form>
+            </div>
+            <!-- زر ملفي الشخصي -->
+            <div class="col-md-2 mb-4">
+                <a href="{{ route('profile.edit') }}" class="btn btn-profile action-button">
+                    My Profile <i class="fas fa-user-edit"></i>
+                </a>
+            </div>
+            <!-- زر الموقع الرئيسي -->
+            <div class="col-md-2 mb-4">
+                <a href="{{ url('/') }}" class="btn btn-main-site action-button">
+                    Main Site <i class="fas fa-home"></i>
+                </a>
+            </div>
+            <!-- زر معلوماتي -->
+            <div class="col-md-2 mb-4">
+                <a href="{{ route('customers.showByUserId', ['userId' => Auth::user()->id]) }}" class="btn btn-info action-button">
+                    My Info <i class="fas fa-info-circle"></i>
+                </a>
+            </div>
+            <!-- زر إنشاء المنتجات -->
+            <div class="col-md-4 mb-12">
+                <a href="{{ route('products.create') }}" class="btn btn-create-product action-button">
+                    Create Product <i class="fas fa-box-open"></i>
+                </a>
+            </div>
+        </div>
+    @endif
+</div>
+
+<style>
+    /* تنسيق الأزرار */
+    .btn-custom {
+        color: #fff;
+        font-size: 1rem;
+        font-weight: bold;
+        padding: 10px 15px;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        border: none;
+        text-decoration: none;
+    }
+
+    .btn-custom i {
+        margin-right: 8px;
+        font-size: 1.2rem;
+    }
+
+    .btn-custom:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* ألوان الأزرار */
+    .btn-logout {
+        background-color: #dc3545; /* أحمر */
+    }
+
+    .btn-logout:hover {
+        background-color: #c82333;
+    }
+
+    .btn-profile {
+        background-color: #007bff; /* أزرق */
+    }
+
+    .btn-profile:hover {
+        background-color: #0056b3;
+    }
+
+    .btn-main-site {
+        background-color: #28a745; /* أخضر */
+    }
+
+    .btn-main-site:hover {
+        background-color: #218838;
+    }
+
+    .btn-info {
+        background-color: #17a2b8; /* تركواز */
+    }
+
+    .btn-info:hover {
+        background-color: #117a8b;
+    }
+
+    .btn-create-product {
+        background-color: #ffc107; /* أصفر */
+        color: #000;
+    }
+
+    .btn-create-product:hover {
+        background-color: #e0a800;
+    }
+
+    .action-button {
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    /* تحسين التباعد بين الأعمدة */
+    .row > [class*='col-'] {
+        margin-bottom: 15px;
+    }
+</style>
+
+
+
     <!-- قسم إضافة العناصر -->
     <div class="container mt-4 text-center">
         @if(Auth::user()->can('isEmployee') || Auth::user()->can('isAdmin'))
             <div class="row justify-content-center">
                 <div class="col-md-2">
-                    <a href="{{ route('categories.create') }}" class="btn btn-success btn-block mb-2">Create Categories</a>
+                    <a href="{{ route('categories.create') }}" class="btn btn-success btn-block action-button">Create Categories</a>
                 </div>
                 <div class="col-md-2">
-                    <a href="{{ route('products.create', ['car' => 1]) }}" class="btn btn-danger btn-block mb-2">Create Products</a>
+                    <a href="{{ route('products.create', ['car' => 1]) }}" class="btn btn-danger btn-block action-button">Create Products</a>
                 </div>
                 <div class="col-md-2">
-                    <a href="{{ route('youtube_channels.create', ['car' => 1]) }}" class="btn btn-warning btn-block mb-2">Create YouTube Channels</a>
+                    <a href="{{ route('youtube_channels.create', ['car' => 1]) }}" class="btn btn-warning btn-block action-button">Create YouTube Channels</a>
                 </div>
                 <div class="col-md-2">
-                    <a href="{{ route('instagram_accounts.create') }}" class="btn btn-info btn-block mb-2">Create Instagram Accounts</a>
+                    <a href="{{ route('instagram_accounts.create') }}" class="btn btn-info btn-block action-button">Create Instagram Accounts</a>
                 </div>
                 <div class="col-md-2">
-                    <a href="{{ route('facebook_pages.create') }}" class="btn btn-primary btn-block mb-2">Create Facebook Pages</a>
+                    <a href="{{ route('facebook_pages.create') }}" class="btn btn-primary btn-block action-button">Create Facebook Pages</a>
                 </div>
             </div>
         @endif
