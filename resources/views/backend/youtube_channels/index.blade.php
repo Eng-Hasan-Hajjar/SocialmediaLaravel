@@ -9,7 +9,8 @@
             <div class="alert alert-success">{{ session('success') }}</div>
         @endif
 
-        <form action="{{ route('youtube_channels.filter') }}" method="GET" class="mb-3">
+        <form action="{{ route('youtube_channels.filter') }}" method="POST" class="mb-3">
+            @csrf
             <div class="row">
                 <div class="col-md-3">
                     <select name="category_id" class="form-select">
@@ -49,6 +50,7 @@
                         <td>{{ $channel->subscribers_count }}</td>
                         <td>{{ $channel->category->name }}</td>
                         <td>
+                            <a href="{{ route('youtube_channels.show', $channel->id) }}" class="btn btn-info">View Details</a>
                             <a href="{{ route('youtube_channels.edit', $channel->id) }}" class="btn btn-warning">Edit</a>
                             <form action="{{ route('youtube_channels.destroy', $channel->id) }}" method="POST" style="display:inline-block;">
                                 @csrf

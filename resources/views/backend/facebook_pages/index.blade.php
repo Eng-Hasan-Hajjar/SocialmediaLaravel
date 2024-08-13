@@ -9,7 +9,8 @@
             <div class="alert alert-success">{{ session('success') }}</div>
         @endif
 
-        <form action="{{ route('facebook_pages.filter') }}" method="GET" class="mb-3">
+        <form action="{{ route('facebook_pages.filter') }}" method="POST" class="mb-3">
+            @csrf
             <div class="row">
                 <div class="col-md-3">
                     <select name="category_id" class="form-select">
@@ -50,6 +51,8 @@
                         <td>{{ $page->category->name }}</td>
                         <td>
                             <a href="{{ route('facebook_pages.edit', $page->id) }}" class="btn btn-warning">Edit</a>
+                            <a href="{{ route('facebook_pages.show', $page->id) }}" class="btn btn-info">View Details</a>
+
                             <form action="{{ route('facebook_pages.destroy', $page->id) }}" method="POST" style="display:inline-block;">
                                 @csrf
                                 @method('DELETE')

@@ -68,6 +68,7 @@ class InstagramAccountController extends Controller
     {
         $query = InstagramAccount::query();
 
+        // تحقق من وجود القيم المطلوبة في الطلب
         if ($request->filled('category_id')) {
             $query->where('category_id', $request->category_id);
         }
@@ -82,7 +83,18 @@ class InstagramAccountController extends Controller
 
         $instagramAccounts = $query->with('category')->get();
 
-        return view('backend.instagram_accounts.index', compact('instagramAccounts'));
+        // تحميل كل الفئات لاستخدامها في العرض إذا لزم الأمر
+        $categories = Category::all();
+
+        return view('backend.instagram_accounts.index', compact('instagramAccounts', 'categories'));
     }
+
+
+public function show(InstagramAccount $instagramAccount)
+{
+    $instagramAccount->load('category');
+    return view('backend.instagram_accounts.show', compact('instagramAccount'));
+}
+
 
 }

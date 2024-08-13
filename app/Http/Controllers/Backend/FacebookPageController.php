@@ -66,23 +66,37 @@ class FacebookPageController extends Controller
     }
 
     public function filter(Request $request)
+{
+    //dd($request);
+    $query = FacebookPage::query();
+
+    // استخدام الدالة filled للتحقق من وجود القيم المطلوبة
+    if ($request->filled('category_id')) {
+        $query->where('category_id', $request->category_id);
+    }
+
+    if ($request->filled('min_followers')) {
+        $query->where('followers_count', '>=', $request->min_followers);
+    }
+
+    if ($request->filled('max_followers')) {
+        $query->where('followers_count', '<=', $request->max_followers);
+    }
+
+    $facebookPages = $query->with('category')->get();
+
+    // تحميل كل الفئات لاستخدامها في العرض إذا لزم الأمر
+    $categories = Category::all();
+
+    return view('backend.facebook_pages.index', compact('facebookPages', 'categories'));
+}
+
+    public function show(FacebookPage $facebookPage)
     {
-        $query = FacebookPage::query();
+        // إحضار البيانات الخاصة بصفحة الفيسبوك
+        $facebookPage->load('category');
 
-        if ($request->filled('category_id')) {
-            $query->where('category_id', $request->category_id);
-        }
-
-        if ($request->filled('min_followers')) {
-            $query->where('followers_count', '>=', $request->min_followers);
-        }
-
-        if ($request->filled('max_followers')) {
-            $query->where('followers_count', '<=', $request->max_followers);
-        }
-
-        $facebookPages = $query->with('category')->get();
-
-        return view('backend.facebook_pages.index', compact('facebookPages'));
+        // عرض التفاصيل في العرض المناسب
+        return view('backend.facebook_pages.show', compact('facebookPage'));
     }
 }

@@ -71,15 +71,17 @@ require __DIR__.'/auth.php';
 
 Route::prefix('backend')->group(function() {
     Route::resource('products', ProductController::class);
+
     Route::resource('facebook_pages', FacebookPageController::class);
-    Route::get('facebook_pages/filter', [FacebookPageController::class, 'filter'])->name('facebook_pages.filter');
+    Route::post('facebook_pages/filter', [FacebookPageController::class, 'filter'])->name('facebook_pages.filter');
+
 
 
     Route::resource('instagram_accounts', InstagramAccountController::class);
-    Route::get('instagram_accounts/filter', [InstagramAccountController::class, 'filter'])->name('instagram_accounts.filter');
+    Route::post('instagram_accounts/filter', [InstagramAccountController::class, 'filter'])->name('instagram_accounts.filter');
 
     Route::resource('youtube_channels', YouTubeChannelController::class);
-    Route::get('youtube_channels/filter', [YouTubeChannelController::class, 'filter'])->name('youtube_channels.filter');
+    Route::post('youtube_channels/filter', [YouTubeChannelController::class, 'filter'])->name('youtube_channels.filter');
 
     Route::resource('categories', CategoryController::class);
 

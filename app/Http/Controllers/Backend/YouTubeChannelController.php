@@ -68,6 +68,7 @@ class YouTubeChannelController extends Controller
     {
         $query = YouTubeChannel::query();
 
+        // تحقق من وجود القيم المطلوبة في الطلب
         if ($request->filled('category_id')) {
             $query->where('category_id', $request->category_id);
         }
@@ -81,7 +82,18 @@ class YouTubeChannelController extends Controller
         }
 
         $youtubeChannels = $query->with('category')->get();
-      //  $categories  = Category::all();
-        return view('backend.youtube_channels.index', compact('youtubeChannels',));
+
+        // تحميل كل الفئات لاستخدامها في العرض إذا لزم الأمر
+        $categories = Category::all();
+
+        return view('backend.youtube_channels.index', compact('youtubeChannels', 'categories'));
     }
+    public function show(YouTubeChannel $youTubeChannel)
+{
+    $youTubeChannel->load('category');
+    return view('backend.youtube_channels.show', compact('youTubeChannel'));
+}
+
+
+
 }

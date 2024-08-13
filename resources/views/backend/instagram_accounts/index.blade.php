@@ -9,7 +9,8 @@
             <div class="alert alert-success">{{ session('success') }}</div>
         @endif
 
-        <form action="{{ route('instagram_accounts.filter') }}" method="GET" class="mb-3">
+        <form action="{{ route('instagram_accounts.filter') }}" method="POST" class="mb-3">
+            @csrf
             <div class="row">
                 <div class="col-md-3">
                     <select name="category_id" class="form-select">
@@ -49,6 +50,7 @@
                         <td>{{ $account->followers_count }}</td>
                         <td>{{ $account->category->name }}</td>
                         <td>
+                            <a href="{{ route('instagram_accounts.show', $account->id) }}" class="btn btn-info">View Details</a>
                             <a href="{{ route('instagram_accounts.edit', $account->id) }}" class="btn btn-warning">Edit</a>
                             <form action="{{ route('instagram_accounts.destroy', $account->id) }}" method="POST" style="display:inline-block;">
                                 @csrf
