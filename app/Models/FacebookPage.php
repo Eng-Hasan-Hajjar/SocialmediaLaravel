@@ -14,4 +14,8 @@ class FacebookPage extends Model
     {
         return $this->belongsTo(Category::class);
     }
+    public function recommendations()
+    {
+        return morphMany(Recommendation::class, 'recommendable');
+    }
 }

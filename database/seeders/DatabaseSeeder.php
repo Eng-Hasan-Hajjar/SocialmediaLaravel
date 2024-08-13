@@ -4,8 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Car;
-use App\Models\Fleet;
+
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -16,26 +15,55 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call(CategoriesSeeder::class);
-             \App\Models\User::create([
-          'name' => 'Test User',
-          'email' => 'test@example.com',
-          'password'=>'123456789',
-          'role'=>'admin',
-        ]);
+
+        //php artisan migrate:fresh
+        //php artisan db:seed --class=CategoriesSeeder
+        //php artisan db:seed
         \App\Models\User::create([
-            'name' => 'Test User 2',
-            'email' => 'test2@example.com',
+            'name' => 'Test User',
+            'email' => 'test@example.com',
             'password'=>'123456789',
-            'role'=>'visitor',
+            'role'=>'admin',
           ]);
           \App\Models\User::create([
-            'name' => 'Test User 3',
-            'email' => 'test3@example.com',
-            'password'=>'123456789',
-          ]);
+              'name' => 'Test User 2',
+              'email' => 'test2@example.com',
+              'password'=>'123456789',
+              'role'=>'visitor',
+            ]);
+            \App\Models\User::create([
+              'name' => 'Test User 3',
+              'email' => 'test3@example.com',
+              'password'=>'123456789',
+            ]);
 
 
+
+
+        $this->call([
+
+            ProductsSeeder::class,
+
+        ]);
+        $this->call([
+
+            FacebookPagesSeeder::class,
+
+        ]);
+        $this->call([
+
+            YouTubeChannelsSeeder::class,
+
+        ]);
+        $this->call([
+
+            InstagramAccountsSeeder::class,
+
+        ]);
+        $this->call([
+
+            RecommendationsSeeder::class,
+        ]);
 
 
 

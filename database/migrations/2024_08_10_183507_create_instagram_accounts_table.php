@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('instagram_accounts', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('url');
+            $table->text('description')->nullable();
+            $table->integer('followers_count');
+            $table->foreignId('category_id')->constrained();
             $table->timestamps();
         });
     }
