@@ -8,7 +8,7 @@
       <p>
         <i class="fas fa-angle-right left"></i>
 
-        website
+        Website
       </p>
 
     </a>
@@ -17,7 +17,7 @@
         <a href="{{url('/')}}" class="nav-link">
 
             <i class="far fa-circle nav-icon"></i>
-            <p>home</p>
+            <p>Home</p>
 
         </a>
       </li>
@@ -40,7 +40,7 @@
       <p>
         <i class="fas fa-angle-right left"></i>
 
-       customers
+       Customers
 
       </p>
 
@@ -50,7 +50,7 @@
         <a href="{{url('/adminpanel/customers/create')}}" class="nav-link">
 
             <i class="far fa-circle nav-icon"></i>
-            <p>create new</p>
+            <p>Create New</p>
 
         </a>
       </li>
@@ -84,7 +84,7 @@
         <a href="{{url('/backend/categories/create')}}" class="nav-link">
 
           <i class="far fa-circle nav-icon"></i>
-          <p>Create Category   </p>
+          <p>Create Category</p>
 
         </a>
       </li>
@@ -92,7 +92,7 @@
         <a href="{{url('/backend/categories')}}" class="nav-link">
 
           <i class="far fa-circle nav-icon"></i>
-          <p>All Categories  </p>
+          <p>All Categories</p>
 
         </a>
       </li>
@@ -120,14 +120,14 @@
         <a href="{{url('/backend/products/create')}}" class="nav-link">
             <i class="far fa-circle nav-icon"></i>
 
-          <p> Create Product    </p>
+          <p> Create Product</p>
         </a>
       </li>
       <li class="nav-item">
         <a href="{{url('/backend/products')}}" class="nav-link">
             <i class="far fa-circle nav-icon"></i>
 
-          <p>All Products  </p>
+          <p>All Products</p>
         </a>
       </li>
 
@@ -156,14 +156,14 @@
         <a href="{{url('/backend/facebook_pages/create')}}" class="nav-link">
             <i class="far fa-circle nav-icon"></i>
 
-          <p>Create Facebook Page   </p>
+          <p>Create New</p>
         </a>
       </li>
       <li class="nav-item">
         <a href="{{url('/backend/facebook_pages')}}" class="nav-link">
             <i class="far fa-circle nav-icon"></i>
 
-          <p>All Facebook Pages  </p>
+          <p>All Facebook Pages</p>
         </a>
       </li>
 
@@ -186,16 +186,16 @@
     <ul class="nav nav-treeview">
       <li class="nav-item">
         <a href="{{url('/backend/instagram_accounts/create')}}" class="nav-link">
-            <i class=" fab fa-youtube-squaree nav-icon"></i>
+            <i class="far fa-circle nav-icon"></i>
 
-          <p>Create Instagram Account   </p>
+          <p>Create New</p>
         </a>
       </li>
       <li class="nav-item">
         <a href="{{url('/backend/instagram_accounts')}}" class="nav-link">
             <i class="far fa-circle nav-icon"></i>
 
-          <p>All Instagram Account  </p>
+          <p>All Instagram Account</p>
         </a>
       </li>
 
@@ -215,9 +215,7 @@
       <p>
         <i class="nav-icon fab fa-youtube"></i>
         <i class="fas fa-angle-right left"></i>
-
          YouTube Channels
-
     </p>
     </a>
     <ul class="nav nav-treeview">
@@ -225,14 +223,14 @@
         <a href="{{url('/backend/youtube_channels/create')}}" class="nav-link">
             <i class="far fa-circle nav-icon"></i>
 
-          <p>Create YouTube Channel   </p>
+          <p>Create New</p>
         </a>
       </li>
       <li class="nav-item">
         <a href="{{url('/backend/youtube_channels')}}" class="nav-link">
             <i class="far fa-circle nav-icon"></i>
 
-          <p>All YouTube Channels  </p>
+          <p>All YouTube Channels</p>
         </a>
       </li>
 
@@ -240,6 +238,37 @@
   </li>
 
 
+{{--    recommendations --}}
+
+
+<li class="nav-item has-treeview">
+    <a href="#" class="nav-link">
+      <p>
+        <i class="nav-icon fa fa-heart"></i>
+        <i class="fas fa-angle-right left"></i>
+
+        Recommendations
+
+    </p>
+    </a>
+    <ul class="nav nav-treeview">
+      <li class="nav-item">
+        <a href="{{url('/backend/recommendations/create')}}" class="nav-link">
+            <i class="far fa-circle nav-icon"></i>
+
+          <p>Create new</p>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="{{url('/backend/recommendations')}}" class="nav-link">
+            <i class="far fa-circle nav-icon"></i>
+
+          <p>All Recommendations</p>
+        </a>
+      </li>
+
+    </ul>
+  </li>
 
 
 

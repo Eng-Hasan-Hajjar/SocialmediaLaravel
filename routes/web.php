@@ -1,5 +1,5 @@
 <?php
-use App\Http\Controllers\AdminDashboardCarController;
+
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -10,7 +10,6 @@ use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\CustomerController;
 
 
-use App\Http\Controllers\RecommendationController;
 
 
 use App\Http\Controllers\Backend\ProductController;
@@ -19,6 +18,8 @@ use App\Http\Controllers\Backend\InstagramAccountController;
 use App\Http\Controllers\Backend\YouTubeChannelController;
 
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\RecommendationController;
+
 
 
 
@@ -85,6 +86,7 @@ Route::prefix('backend')->group(function() {
 
     Route::resource('categories', CategoryController::class);
 
+    Route::resource('recommendations', RecommendationController::class);
 
 });
 

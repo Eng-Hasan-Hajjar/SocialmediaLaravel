@@ -33,6 +33,7 @@
                             @endif
                         </td>
                         <td>
+                            <a href="{{ route('recommendations.show', $recommendation->id) }}" class="btn btn-info">View</a>
                             <a href="{{ route('recommendations.edit', $recommendation->id) }}" class="btn btn-warning">Edit</a>
                             <form action="{{ route('recommendations.destroy', $recommendation->id) }}" method="POST" style="display:inline-block;">
                                 @csrf

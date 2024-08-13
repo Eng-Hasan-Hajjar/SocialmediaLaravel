@@ -15,19 +15,17 @@ class RecommendationController extends Controller
 {
     public function index()
     {
-        $recommendations = Recommendation::with(['recommendable', 'product', 'user'])->get();
+        $recommendations = Recommendation::with(['recommendable', 'user', 'product'])->get();
         return view('backend.recommendations.index', compact('recommendations'));
     }
 
     public function create()
     {
         $products = Product::all();
-        $users = User::all();
         $facebookPages = FacebookPage::all();
         $instagramAccounts = InstagramAccount::all();
         $youtubeChannels = YouTubeChannel::all();
-
-        return view('backend.recommendations.create', compact('products', 'users', 'facebookPages', 'instagramAccounts', 'youtubeChannels'));
+        return view('backend.recommendations.create', compact('products', 'facebookPages', 'instagramAccounts', 'youtubeChannels'));
     }
 
     public function store(Request $request)
@@ -35,8 +33,8 @@ class RecommendationController extends Controller
         $request->validate([
             'user_id' => 'required|exists:users,id',
             'product_id' => 'required|exists:products,id',
-            'recommendable_type' => 'required|string',
-            'recommendable_id' => 'required|integer',
+            'recommendable_id' => 'required',
+            'recommendable_type' => 'required|in:FacebookPage,InstagramAccount,YouTubeChannel',
         ]);
 
         Recommendation::create($request->all());
@@ -44,15 +42,18 @@ class RecommendationController extends Controller
         return redirect()->route('recommendations.index')->with('success', 'Recommendation created successfully.');
     }
 
+    public function show(Recommendation $recommendation)
+    {
+        return view('backend.recommendations.show', compact('recommendation'));
+    }
+
     public function edit(Recommendation $recommendation)
     {
         $products = Product::all();
-        $users = User::all();
         $facebookPages = FacebookPage::all();
         $instagramAccounts = InstagramAccount::all();
         $youtubeChannels = YouTubeChannel::all();
-
-        return view('backend.recommendations.edit', compact('recommendation', 'products', 'users', 'facebookPages', 'instagramAccounts', 'youtubeChannels'));
+        return view('backend.recommendations.edit', compact('recommendation', 'products', 'facebookPages', 'instagramAccounts', 'youtubeChannels'));
     }
 
     public function update(Request $request, Recommendation $recommendation)
@@ -60,8 +61,8 @@ class RecommendationController extends Controller
         $request->validate([
             'user_id' => 'required|exists:users,id',
             'product_id' => 'required|exists:products,id',
-            'recommendable_type' => 'required|string',
-            'recommendable_id' => 'required|integer',
+            'recommendable_id' => 'required',
+            'recommendable_type' => 'required|in:FacebookPage,InstagramAccount,YouTubeChannel',
         ]);
 
         $recommendation->update($request->all());
