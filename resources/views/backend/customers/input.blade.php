@@ -69,10 +69,7 @@ input
                                 </td>
 
                                 <td>
-                                    <div class="form-group">
-                                        <label for="driving_license_number">driving license number  </label>
-                                        <input type="text" class="form-control" name="driving_license_number" id="driving_license_number" required>
-                                    </div>
+                                
                                 </td>
 
 

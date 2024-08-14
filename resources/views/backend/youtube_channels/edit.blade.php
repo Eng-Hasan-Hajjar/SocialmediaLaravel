@@ -37,7 +37,10 @@
                     @endforeach
                 </select>
             </div>
-
+            <div class="mb-3">
+                <label for="location" class="form-label">Location (Country)</label>
+                <input type="text" class="form-control" id="location" name="location" value="{{ old('location', $youtubeChannel->location ?? '') }}" placeholder="Enter location">
+            </div>
             <button type="submit" class="btn btn-primary">Update Channel</button>
         </form>
     </div>

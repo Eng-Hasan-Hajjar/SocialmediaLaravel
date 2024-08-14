@@ -14,6 +14,8 @@
                 <p><strong>Description:</strong> {{ $youTubeChannel->description }}</p>
                 <p><strong>Subscribers Count:</strong> {{ $youTubeChannel->subscribers_count }}</p>
                 <p><strong>Category:</strong> {{ $youTubeChannel->category->name }}</p>
+                <p><strong>Location (Country):</strong> {{ $youtubeChannel->location }}</p>
+
             </div>
         </div>
     </div>

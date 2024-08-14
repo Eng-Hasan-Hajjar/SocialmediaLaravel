@@ -30,6 +30,7 @@ class InstagramAccountController extends Controller
             'description' => 'nullable|string',
             'followers_count' => 'required|integer',
             'category_id' => 'required|exists:categories,id',
+            'location' => 'nullable|string|max:255',
         ]);
 
         InstagramAccount::create($request->all());
@@ -51,6 +52,7 @@ class InstagramAccountController extends Controller
             'description' => 'nullable|string',
             'followers_count' => 'required|integer',
             'category_id' => 'required|exists:categories,id',
+            'location' => 'nullable|string|max:255',
         ]);
 
         $instagramAccount->update($request->all());

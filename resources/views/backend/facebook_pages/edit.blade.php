@@ -37,7 +37,10 @@
                     @endforeach
                 </select>
             </div>
-
+            <div class="mb-3">
+                <label for="location" class="form-label">Location (Country)</label>
+                <input type="text" class="form-control" id="location" name="location" value="{{ old('location', $facebookPage->location ?? '') }}" placeholder="Enter location">
+            </div>
             <button type="submit" class="btn btn-primary">Update Page</button>
         </form>
     </div>

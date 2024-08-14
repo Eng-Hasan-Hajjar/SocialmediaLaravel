@@ -31,6 +31,7 @@ class FacebookPageController extends Controller
             'description' => 'nullable|string',
             'followers_count' => 'required|integer',
             'category_id' => 'required|exists:categories,id',
+            'location' => 'nullable|string|max:255',
         ]);
 
         FacebookPage::create($request->all());
@@ -52,6 +53,7 @@ class FacebookPageController extends Controller
             'description' => 'nullable|string',
             'followers_count' => 'required|integer',
             'category_id' => 'required|exists:categories,id',
+            'location' => 'nullable|string|max:255',
         ]);
 
         $facebookPage->update($request->all());

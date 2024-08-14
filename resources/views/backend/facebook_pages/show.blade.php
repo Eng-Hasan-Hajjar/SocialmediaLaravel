@@ -14,6 +14,7 @@
                 <p><strong>Description:</strong> {{ $facebookPage->description }}</p>
                 <p><strong>Followers Count:</strong> {{ $facebookPage->followers_count }}</p>
                 <p><strong>Category:</strong> {{ $facebookPage->category->name }}</p>
+                <p><strong>Location (Country):</strong> {{ $facebookPage->location }}</p>
             </div>
         </div>
     </div>

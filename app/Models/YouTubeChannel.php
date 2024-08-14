@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class YouTubeChannel extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'url', 'description', 'subscribers_count', 'category_id'];
+    protected $fillable = ['name', 'url', 'description', 'subscribers_count', 'category_id', 'location'];
 
     public function category()
     {

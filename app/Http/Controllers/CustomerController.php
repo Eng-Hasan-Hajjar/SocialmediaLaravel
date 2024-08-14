@@ -47,7 +47,7 @@ class CustomerController extends Controller
         if (auth()->user()->role === 'admin' && !$request->has('user_id')) {
             Auth::logout(); // تسجيل خروج المدير
             return redirect()->route('register')
-                            ->with('info', 'يرجى إنشاء حساب مستخدم جديد أولاً.');
+                            ->with('info', 'Please create a new user account first.');
         }
         return view('backend.customers.create');
     }
@@ -58,16 +58,16 @@ class CustomerController extends Controller
     {
 
         $messages = [
-            'name.required' => 'حقل  الاسم مطلوب',
-            'phone.required' => 'حقل رقم الهاتف مطلوب',
-            'phone.numeric' => 'هاتف المستخدم غير صالح',
-            'specialty.required' => 'حقل الاختصاص  مطلوب',
-            'work.required' => 'حقل العمل مطلوب',
-            'nationality.required' => 'حقل الجنسية مطلوب',
-            'current_location.required' => 'حقل الموقع الحالي مطلوب',
-            'gender.required' => 'حقل الجنس مطلوب',
-            'birthday.required' => 'حقل تاريخ الميلاد مطلوب',
-            'driving_license_number.required' => 'حقل رقم الشهادة  مطلوب',
+            'name.required' => 'The name field is required.',
+            'phone.required' => 'The phone number field is required.',
+            'phone.numeric' => 'The phone number is not valid.',
+            'specialty.required' => 'The specialty field is required.',
+            'work.required' => 'The work field is required.',
+            'nationality.required' => 'The nationality field is required.',
+            'current_location.required' => 'The current location field is required.',
+            'gender.required' => 'The gender field is required.',
+            'birthday.required' => 'The date of birth field is required.',
+
         ];
         $request->validate([
             'phone'=> 'required|numeric',
@@ -76,13 +76,13 @@ class CustomerController extends Controller
             'current_location' => 'required',
             'gender'=>  'required',
             'birthday'=> 'required',
-            'driving_license_number' => 'required|string|max:255',
+
         ], $messages);
 
                     // التحقق من عمر المستخدم
             $age = Carbon::parse($request->birthday)->age;
             if ($age < 18) {
-                return redirect()->back()->withErrors(['birthday' => 'يجب أن يكون عمرك فوق 18 عامًا لتتمكن من التسجيل.']);
+                return redirect()->back()->withErrors(['birthday' => 'You must be over 18 years of age to register.']);
             }
 
 
@@ -112,7 +112,7 @@ class CustomerController extends Controller
     {
         $customer = Customer::where('user_id', $userId)->first();
         if (!$customer) {
-            return redirect()->route('customers2.input')->with('error', 'لم يتم العثور على معلومات الزائر، يرجى استكمال البيانات.');
+            return redirect()->route('customers2.input')->with('error','Visitor information not found, please complete the data.');
         }
         return view('backend.customers.showyou', compact('customer'));
     }
@@ -134,14 +134,15 @@ class CustomerController extends Controller
     public function update(Request $request, Customer $customer)
     {
         $messages = [
-            'phone.required' => 'حقل رقم الهاتف مطلوب',
-            'phone.numeric' => 'هاتف المستخدم غير صالح',
-            'specialty.required' => 'حقل الاختصاص  مطلوب',
-            'work.required' => 'حقل العمل مطلوب',
-            'nationality.required' => 'حقل الجنسية مطلوب',
-            'current_location.required' => 'حقل الموقع الحالي مطلوب',
-            'gender.required' => 'حقل الجنس مطلوب',
-            'birthday.required' => 'حقل تاريخ الميلاد مطلوب',
+            'name.required' => 'The name field is required.',
+            'phone.required' => 'The phone number field is required.',
+            'phone.numeric' => 'The phone number is not valid.',
+            'specialty.required' => 'The specialty field is required.',
+            'work.required' => 'The work field is required.',
+            'nationality.required' => 'The nationality field is required.',
+            'current_location.required' => 'The current location field is required.',
+            'gender.required' => 'The gender field is required.',
+            'birthday.required' => 'The date of birth field is required.',
         ];
 
         $request->validate([
@@ -151,17 +152,17 @@ class CustomerController extends Controller
             'current_location' => 'required',
             'gender'=>  'required',
             'birthday'=> 'required',
-            'driving_license_number' => 'required|string|max:255',
+
         ], $messages);
 
         $customer->update($request->all());
 
         if (Auth::user()->role === 'customer') {
             return redirect()->route('dashboard')
-                             ->with('success', 'تم تحديث معلوماتك  بنجاح');
+                             ->with('success', 'Your information has been updated successfully.');
         }
         return redirect()->route('customers.index')
-                        ->with('success','تم تحديث معلوماتك  بنجاح');
+                        ->with('success','Your information has been updated successfully.'  );
     }
     /**
      * Remove the specified resource from storage.
@@ -180,14 +181,15 @@ class CustomerController extends Controller
     public function input2(Request $request)
     {
         $messages = [
-            'phone.required' => 'حقل رقم الهاتف مطلوب',
-            'phone.numeric' => 'هاتف المستخدم غير صالح',
-            'specialty.required' => 'حقل الاختصاص  مطلوب',
-            'work.required' => 'حقل العمل مطلوب',
-            'nationality.required' => 'حقل الجنسية مطلوب',
-            'current_location.required' => 'حقل الموقع الحالي مطلوب',
-            'gender.required' => 'حقل الجنس مطلوب',
-            'birthday.required' => 'حقل تاريخ الميلاد مطلوب',
+            'name.required' => 'The name field is required.',
+            'phone.required' => 'The phone number field is required.',
+            'phone.numeric' => 'The phone number is not valid.',
+            'specialty.required' => 'The specialty field is required.',
+            'work.required' => 'The work field is required.',
+            'nationality.required' => 'The nationality field is required.',
+            'current_location.required' => 'The current location field is required.',
+            'gender.required' => 'The gender field is required.',
+            'birthday.required' => 'The date of birth field is required.',
         ];
 
         $request->validate([
@@ -197,7 +199,7 @@ class CustomerController extends Controller
             'current_location' => 'required',
             'gender'=>  'required',
             'birthday'=> 'required',
-            'driving_license_number' => 'required|string|max:255',
+
         ], $messages);
 //dd($request);
           // الحصول على المستخدم المسجل
@@ -210,7 +212,7 @@ class CustomerController extends Controller
             return view('backend.customers.showyou', compact('customer','user'));
         }
         return redirect()->route('customers.index')
-                        ->with('success','تم التحديث بنجاح ');
+                        ->with('success','Updated successfully');
     }
 
 

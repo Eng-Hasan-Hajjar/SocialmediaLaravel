@@ -51,15 +51,5 @@ class User extends Authenticatable
     {
         return $this->hasMany(Rating::class);
     }
-/*
-    public function visitor(): HasOne
-    {
-        return $this->hasOne(Visitor::class);
-    }
-*/
-    public function reservations()
-    {
-        return $this->hasMany(CarReservation::class);
-    }
 
 }

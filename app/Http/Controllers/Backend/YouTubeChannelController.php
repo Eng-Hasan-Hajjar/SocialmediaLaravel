@@ -30,6 +30,7 @@ class YouTubeChannelController extends Controller
             'description' => 'nullable|string',
             'subscribers_count' => 'required|integer',
             'category_id' => 'required|exists:categories,id',
+            'location' => 'nullable|string|max:255',
         ]);
 
         YouTubeChannel::create($request->all());
@@ -51,6 +52,7 @@ class YouTubeChannelController extends Controller
             'description' => 'nullable|string',
             'subscribers_count' => 'required|integer',
             'category_id' => 'required|exists:categories,id',
+            'location' => 'nullable|string|max:255',
         ]);
 
         $youtubeChannel->update($request->all());

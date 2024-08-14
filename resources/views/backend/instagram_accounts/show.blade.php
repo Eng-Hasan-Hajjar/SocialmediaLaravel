@@ -14,6 +14,8 @@
                 <p><strong>Description:</strong> {{ $instagramAccount->description }}</p>
                 <p><strong>Followers Count:</strong> {{ $instagramAccount->followers_count }}</p>
                 <p><strong>Category:</strong> {{ $instagramAccount->category->name }}</p>
+                <p><strong>Location (Country):</strong> {{ $instagramAccount->location }}</p>
+
             </div>
         </div>
     </div>
