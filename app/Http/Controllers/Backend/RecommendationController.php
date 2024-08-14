@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\FacebookPage;
 use App\Models\InstagramAccount;
 use App\Models\Product;
@@ -15,8 +16,10 @@ class RecommendationController extends Controller
 {
     public function index()
     {
+            // تحميل كل الفئات لاستخدامها في العرض إذا لزم الأمر
+            $categories = Category::all();
         $recommendations = Recommendation::with(['recommendable', 'user', 'product'])->get();
-        return view('backend.recommendations.index', compact('recommendations'));
+        return view('backend.recommendations.index', compact('recommendations','categories'));
     }
 
     public function create()
@@ -75,4 +78,56 @@ class RecommendationController extends Controller
         $recommendation->delete();
         return redirect()->route('recommendations.index')->with('success', 'Recommendation deleted successfully.');
     }
+
+
+
+
+    public function recommend(Request $request)
+    {
+        $request->validate([
+            'platform' => 'required|string',
+            'category_id' => 'required|exists:categories,id',
+        ]);
+
+        $platform = $request->input('platform');
+        $categoryId = $request->input('category_id');
+
+        // الحصول على الموقع الحالي للمستخدم عبر علاقته مع جدول الزبائن
+        $location = auth()->user()->customer->current_location;
+
+        $recommendations = [];
+
+        switch ($platform) {
+            case 'facebook':
+                $recommendations = FacebookPage::where('category_id', $categoryId)
+                    ->where('location', $location)
+                    ->orderBy('followers_count', 'desc')
+                    ->take(5)
+                    ->get();
+                break;
+
+            case 'instagram':
+                $recommendations = InstagramAccount::where('category_id', $categoryId)
+                    ->where('location', $location)
+                    ->orderBy('followers_count', 'desc')
+                    ->take(5)
+                    ->get();
+                break;
+
+            case 'youtube':
+                $recommendations = YouTubeChannel::where('category_id', $categoryId)
+                    ->where('location', $location)
+                    ->orderBy('subscribers_count', 'desc')
+                    ->take(5)
+                    ->get();
+                break;
+        }
+
+        return view('backend.recommendations.results', compact('recommendations', 'platform'));
+
+    }
+
+
+
+
 }

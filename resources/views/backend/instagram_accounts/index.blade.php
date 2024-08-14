@@ -27,9 +27,9 @@
                     <input type="number" name="max_followers" class="form-control" placeholder="Max Followers">
                 </div>
                    <!-- Location Filter -->
-        <div class="col-md-3">
-            <input type="text" name="location" class="form-control" placeholder="Location">
-        </div>
+                <div class="col-md-3">
+                    <input type="text" name="location" class="form-control" placeholder="Location">
+                </div>
                 <div class="col-md-2">
                     <button type="submit" class="btn btn-secondary">Filter</button>
                 </div>

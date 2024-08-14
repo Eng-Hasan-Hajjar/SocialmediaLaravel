@@ -92,3 +92,4 @@ Route::prefix('backend')->group(function() {
 
 
 
+Route::post('/recommend', [RecommendationController::class, 'recommend'])->name('recommendations.recommend');

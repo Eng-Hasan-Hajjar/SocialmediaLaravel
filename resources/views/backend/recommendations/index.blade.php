@@ -9,6 +9,8 @@
             <div class="alert alert-success">{{ session('success') }}</div>
         @endif
 
+
+        @include('backend.recommendations.recommendation_form')
         <table class="table">
             <thead>
                 <tr>

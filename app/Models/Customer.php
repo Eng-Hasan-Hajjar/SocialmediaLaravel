@@ -18,7 +18,7 @@ class Customer extends Model
     'current_location',
     'gender',
     'birthday',
-    'driving_license_number',
+    
 ];
 protected $dates = ['birthday'];
 
