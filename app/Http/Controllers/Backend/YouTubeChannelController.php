@@ -82,7 +82,10 @@ class YouTubeChannelController extends Controller
         if ($request->filled('max_subscribers')) {
             $query->where('subscribers_count', '<=', $request->max_subscribers);
         }
-
+        if ($request->filled('location')) {
+            $query->where('location', 'LIKE', '%' . $request->location . '%');
+        }
+        
         $youtubeChannels = $query->with('category')->get();
 
         // تحميل كل الفئات لاستخدامها في العرض إذا لزم الأمر

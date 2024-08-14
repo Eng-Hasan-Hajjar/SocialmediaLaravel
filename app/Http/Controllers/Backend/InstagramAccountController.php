@@ -82,7 +82,9 @@ class InstagramAccountController extends Controller
         if ($request->filled('max_followers')) {
             $query->where('followers_count', '<=', $request->max_followers);
         }
-
+        if ($request->filled('location')) {
+            $query->where('location', 'LIKE', '%' . $request->location . '%');
+        }
         $instagramAccounts = $query->with('category')->get();
 
         // تحميل كل الفئات لاستخدامها في العرض إذا لزم الأمر

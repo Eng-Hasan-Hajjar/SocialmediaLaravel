@@ -20,13 +20,17 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <input type="number" name="min_subscribers" class="form-control" placeholder="Min Subscribers">
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <input type="number" name="max_subscribers" class="form-control" placeholder="Max Subscribers">
                 </div>
-                <div class="col-md-3">
+                   <!-- Location Filter -->
+        <div class="col-md-3">
+            <input type="text" name="location" class="form-control" placeholder="Location">
+        </div>
+                <div class="col-md-2">
                     <button type="submit" class="btn btn-secondary">Filter</button>
                 </div>
             </div>
@@ -39,6 +43,8 @@
                     <th>URL</th>
                     <th>Subscribers</th>
                     <th>Category</th>
+                    <th>Location</th>
+
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -49,6 +55,7 @@
                         <td><a href="{{ $channel->url }}" target="_blank">{{ $channel->url }}</a></td>
                         <td>{{ $channel->subscribers_count }}</td>
                         <td>{{ $channel->category->name }}</td>
+                        <td>{{ $channel->location }}</td> <!-- عرض الموقع -->
                         <td>
                             <a href="{{ route('youtube_channels.show', $channel->id) }}" class="btn btn-info">View Details</a>
                             <a href="{{ route('youtube_channels.edit', $channel->id) }}" class="btn btn-warning">Edit</a>

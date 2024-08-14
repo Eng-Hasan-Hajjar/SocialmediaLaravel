@@ -20,13 +20,17 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <input type="number" name="min_followers" class="form-control" placeholder="Min Followers">
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <input type="number" name="max_followers" class="form-control" placeholder="Max Followers">
                 </div>
+                   <!-- Location Filter -->
                 <div class="col-md-3">
+                    <input type="text" name="location" class="form-control" placeholder="Location">
+                </div>
+                <div class="col-md-2">
                     <button type="submit" class="btn btn-secondary">Filter</button>
                 </div>
             </div>
@@ -39,6 +43,7 @@
                     <th>URL</th>
                     <th>Followers</th>
                     <th>Category</th>
+                    <th>Location</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -49,6 +54,7 @@
                         <td><a href="{{ $page->url }}" target="_blank">{{ $page->url }}</a></td>
                         <td>{{ $page->followers_count }}</td>
                         <td>{{ $page->category->name }}</td>
+                        <td>{{ $page->location }}</td> <!-- عرض الموقع -->
                         <td>
                             <a href="{{ route('facebook_pages.edit', $page->id) }}" class="btn btn-warning">Edit</a>
                             <a href="{{ route('facebook_pages.show', $page->id) }}" class="btn btn-info">View Details</a>
