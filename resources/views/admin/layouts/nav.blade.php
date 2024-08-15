@@ -252,18 +252,12 @@
     </p>
     </a>
     <ul class="nav nav-treeview">
-      <li class="nav-item">
-        <a href="{{url('/backend/recommendations/create')}}" class="nav-link">
-            <i class="far fa-circle nav-icon"></i>
 
-          <p>Create new</p>
-        </a>
-      </li>
       <li class="nav-item">
         <a href="{{url('/backend/recommendations')}}" class="nav-link">
             <i class="far fa-circle nav-icon"></i>
 
-          <p>All Recommendations</p>
+          <p>Your Recommendations</p>
         </a>
       </li>
 

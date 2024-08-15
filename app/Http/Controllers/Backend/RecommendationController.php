@@ -81,52 +81,59 @@ class RecommendationController extends Controller
 
 
 
-
     public function recommend(Request $request)
     {
         $request->validate([
-            'platform' => 'required|string',
+            'platforms' => 'required|array|min:1',
             'category_id' => 'required|exists:categories,id',
         ]);
 
-        $platform = $request->input('platform');
+        $platforms = $request->input('platforms');
         $categoryId = $request->input('category_id');
 
         // الحصول على الموقع الحالي للمستخدم عبر علاقته مع جدول الزبائن
         $location = auth()->user()->customer->current_location;
 
-        $recommendations = [];
+        $allRecommendations = collect(); // استخدم collection لجمع التوصيات من المنصات المختلفة
 
-        switch ($platform) {
-            case 'facebook':
-                $recommendations = FacebookPage::where('category_id', $categoryId)
-                    ->where('location', $location)
-                    ->orderBy('followers_count', 'desc')
-                    ->take(5)
-                    ->get();
-                break;
+        foreach ($platforms as $platform) {
+            $recommendations = collect();
 
-            case 'instagram':
-                $recommendations = InstagramAccount::where('category_id', $categoryId)
-                    ->where('location', $location)
-                    ->orderBy('followers_count', 'desc')
-                    ->take(5)
-                    ->get();
-                break;
+            switch ($platform) {
+                case 'facebook':
+                    $recommendations = FacebookPage::where('category_id', $categoryId)
+                        ->where('location', $location)
+                        ->orderBy('followers_count', 'desc')
+                        ->take(5)
+                        ->get();
+                    break;
 
-            case 'youtube':
-                $recommendations = YouTubeChannel::where('category_id', $categoryId)
-                    ->where('location', $location)
-                    ->orderBy('subscribers_count', 'desc')
-                    ->take(5)
-                    ->get();
-                break;
+                case 'instagram':
+                    $recommendations = InstagramAccount::where('category_id', $categoryId)
+                        ->where('location', $location)
+                        ->orderBy('followers_count', 'desc')
+                        ->take(5)
+                        ->get();
+                    break;
+
+                case 'youtube':
+                    $recommendations = YouTubeChannel::where('category_id', $categoryId)
+                        ->where('location', $location)
+                        ->orderBy('subscribers_count', 'desc')
+                        ->take(5)
+                        ->get();
+                    break;
+            }
+
+            // إضافة توصيات المنصة الحالية إلى القائمة العامة مع توضيح المنصة
+            $allRecommendations = $allRecommendations->merge($recommendations->map(function($item) use ($platform) {
+                $item->platform = $platform;
+                return $item;
+            }));
         }
 
-        return view('backend.recommendations.results', compact('recommendations', 'platform'));
-
+        return view('backend.recommendations.results', compact('allRecommendations'));
     }
-
 
 
 
