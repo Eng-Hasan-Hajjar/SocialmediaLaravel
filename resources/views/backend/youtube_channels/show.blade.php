@@ -15,7 +15,15 @@
                 <p><strong>Subscribers Count:</strong> {{ $youTubeChannel->subscribers_count }}</p>
                 <p><strong>Category:</strong> {{ $youTubeChannel->category->name }}</p>
                 <p><strong>Location (Country):</strong> {{ $youtubeChannel->location }}</p>
+                    @if ($youTubeChannel->image)
+                        <div class="row mb-3">
+                            <div class="col">
+                                <strong>Image:</strong>
+                                <img src="{{ URL::to('/') }}/images/{{ $youTubeChannel->image }}" class="img-thumbnail" style="width: 300px; height: auto;" />
 
+                            </div>
+                        </div>
+                    @endif
             </div>
         </div>
     </div>

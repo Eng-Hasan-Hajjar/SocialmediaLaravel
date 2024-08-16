@@ -4,7 +4,7 @@
     <div class="container">
         <h1>Create Facebook Page</h1>
 
-        <form action="{{ route('facebook_pages.store') }}" method="POST">
+        <form action="{{ route('facebook_pages.store') }}" method="POST"enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
@@ -38,6 +38,11 @@
                 <label for="location" class="form-label">Location (Country)</label>
                 <input type="text" class="form-control" id="location" name="location" value="{{ old('location', $facebookPage->location ?? '') }}" placeholder="Enter location">
             </div>
+            <div class="form-group">
+                <label for="image">الصورة </label>
+                <input type="file" class="form-control" id="image" name="image">
+            </div>
+
             <button type="submit" class="btn btn-primary">Create Page</button>
         </form>
     </div>

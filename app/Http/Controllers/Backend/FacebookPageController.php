@@ -32,9 +32,26 @@ class FacebookPageController extends Controller
             'followers_count' => 'required|integer',
             'category_id' => 'required|exists:categories,id',
             'location' => 'nullable|string|max:255',
+            'image' => 'nullable|image|max:2048',
         ]);
+        $image = $request->file('image');
+        $new_name = rand() . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('images'), $new_name);
 
-        FacebookPage::create($request->all());
+        $form_data = array(
+            'name' => $request->name,
+            'url' => $request->url,
+            'description' => $request->description,
+            'followers_count' => $request->followers_count,
+            'category_id' => $request->category_id,
+            'location' => $request->location,
+
+            'image'  =>  $new_name,
+        );
+       // dd($form_data);
+
+       FacebookPage::create($form_data);
+       // FacebookPage::create($request->all());
 
         return redirect()->route('facebook_pages.index')->with('success', 'Facebook Page created successfully.');
     }
@@ -54,10 +71,21 @@ class FacebookPageController extends Controller
             'followers_count' => 'required|integer',
             'category_id' => 'required|exists:categories,id',
             'location' => 'nullable|string|max:255',
+            'image' => 'nullable|image|max:2048',
         ]);
-
-        $facebookPage->update($request->all());
-
+        $image = $request->file('image');
+        $new_name = rand() . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('images'), $new_name);
+        $form_data = array(
+            'name' => $request->name,
+            'url' => $request->url,
+            'description' => $request->description,
+            'followers_count' => $request->followers_count,
+            'category_id' => $request->category_id,
+            'location' => $request->location,
+            'image'  =>  $new_name,
+        );
+        $facebookPage->update($form_data);
         return redirect()->route('facebook_pages.index')->with('success', 'Facebook Page updated successfully.');
     }
 
@@ -87,7 +115,7 @@ class FacebookPageController extends Controller
     if ($request->filled('location')) {
         $query->where('location', 'LIKE', '%' . $request->location . '%');
     }
-    
+
     $facebookPages = $query->with('category')->get();
 
     // تحميل كل الفئات لاستخدامها في العرض إذا لزم الأمر

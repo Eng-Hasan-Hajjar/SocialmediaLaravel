@@ -4,7 +4,7 @@
     <div class="container">
         <h1>Create YouTube Channel</h1>
 
-        <form action="{{ route('youtube_channels.store') }}" method="POST">
+        <form action="{{ route('youtube_channels.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
@@ -37,6 +37,10 @@
             <div class="mb-3">
                 <label for="location" class="form-label">Location (Country)</label>
                 <input type="text" class="form-control" id="location" name="location" value="{{ old('location', $youtubeChannel->location ?? '') }}" placeholder="Enter location">
+            </div>
+            <div class="form-group">
+                <label for="image">الصورة </label>
+                <input type="file" class="form-control" id="image" name="image">
             </div>
             <button type="submit" class="btn btn-primary">Create Channel</button>
         </form>

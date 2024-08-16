@@ -15,6 +15,15 @@
                 <p><strong>Followers Count:</strong> {{ $facebookPage->followers_count }}</p>
                 <p><strong>Category:</strong> {{ $facebookPage->category->name }}</p>
                 <p><strong>Location (Country):</strong> {{ $facebookPage->location }}</p>
+                @if ($facebookPage->image)
+                    <div class="row mb-3">
+                        <div class="col">
+                            <strong>Image:</strong>
+                            <img src="{{ URL::to('/') }}/images/{{ $facebookPage->image }}" class="img-thumbnail" style="width: 300px; height: auto;" />
+
+                        </div>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

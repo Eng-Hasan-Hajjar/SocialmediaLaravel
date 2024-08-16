@@ -16,6 +16,14 @@
                 <p><strong>Category:</strong> {{ $instagramAccount->category->name }}</p>
                 <p><strong>Location (Country):</strong> {{ $instagramAccount->location }}</p>
 
+                    <div class="row mb-3">
+                        <div class="col">
+                            <strong>Image:</strong>
+                            <img src="{{ URL::to('/') }}/images/{{ $instagramAccount->image }}" class="img-thumbnail" style="width: 300px; height: auto;" />
+
+                        </div>
+                    </div>
+                
             </div>
         </div>
     </div>

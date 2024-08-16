@@ -4,7 +4,7 @@
     <div class="container">
         <h1>Edit Facebook Page</h1>
 
-        <form action="{{ route('facebook_pages.update', $facebookPage->id) }}" method="POST">
+        <form action="{{ route('facebook_pages.update', $facebookPage->id) }}" method="POST"enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="mb-3">
@@ -40,6 +40,10 @@
             <div class="mb-3">
                 <label for="location" class="form-label">Location (Country)</label>
                 <input type="text" class="form-control" id="location" name="location" value="{{ old('location', $facebookPage->location ?? '') }}" placeholder="Enter location">
+            </div>
+            <div class="form-group">
+                <label for="image">الصورة </label>
+                <input type="file" class="form-control" id="image" name="image">
             </div>
             <button type="submit" class="btn btn-primary">Update Page</button>
         </form>

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->integer('followers_count');
             $table->foreignId('category_id')->constrained();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

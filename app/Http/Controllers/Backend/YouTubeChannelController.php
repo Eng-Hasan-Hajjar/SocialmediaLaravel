@@ -31,9 +31,27 @@ class YouTubeChannelController extends Controller
             'subscribers_count' => 'required|integer',
             'category_id' => 'required|exists:categories,id',
             'location' => 'nullable|string|max:255',
+            'image' => 'nullable|image|max:2048',
         ]);
+        $image = $request->file('image');
+        $new_name = rand() . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('images'), $new_name);
+        $form_data = array(
+            'name' => $request->name,
+            'url' => $request->url,
+            'description' => $request->description,
+            'subscribers_count' => $request->subscribers_count,
+            'category_id' => $request->category_id,
+            'location' => $request->location,
 
-        YouTubeChannel::create($request->all());
+            'image'  =>  $new_name,
+        );
+       // dd($form_data);
+
+       YouTubeChannel::create($form_data);
+
+
+       // YouTubeChannel::create($request->all());
 
         return redirect()->route('youtube_channels.index')->with('success', 'YouTube Channel created successfully.');
     }
@@ -53,9 +71,24 @@ class YouTubeChannelController extends Controller
             'subscribers_count' => 'required|integer',
             'category_id' => 'required|exists:categories,id',
             'location' => 'nullable|string|max:255',
+            'image' => 'nullable|image|max:2048',
         ]);
 
-        $youtubeChannel->update($request->all());
+        $image = $request->file('image');
+        $new_name = rand() . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('images'), $new_name);
+        $form_data = array(
+            'name' => $request->name,
+            'url' => $request->url,
+            'description' => $request->description,
+            'subscribers_count' => $request->subscribers_count,
+            'category_id' => $request->category_id,
+            'location' => $request->location,
+            'image'  =>  $new_name,
+        );
+
+
+        $youtubeChannel->update($form_data);
 
         return redirect()->route('youtube_channels.index')->with('success', 'YouTube Channel updated successfully.');
     }
@@ -85,7 +118,7 @@ class YouTubeChannelController extends Controller
         if ($request->filled('location')) {
             $query->where('location', 'LIKE', '%' . $request->location . '%');
         }
-        
+
         $youtubeChannels = $query->with('category')->get();
 
         // تحميل كل الفئات لاستخدامها في العرض إذا لزم الأمر
