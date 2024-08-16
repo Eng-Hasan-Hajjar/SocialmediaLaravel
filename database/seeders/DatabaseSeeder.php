@@ -29,12 +29,13 @@ class DatabaseSeeder extends Seeder
               'name' => 'Test User 2',
               'email' => 'test2@example.com',
               'password'=>'123456789',
-              'role'=>'visitor',
+              'role'=>'employee',
             ]);
             \App\Models\User::create([
               'name' => 'Test User 3',
               'email' => 'test3@example.com',
               'password'=>'123456789',
+              'role'=>'customer',
             ]);
 
 

@@ -16,27 +16,14 @@ class CustomerController extends Controller
     public function index()
     {
         $user = auth()->user();
-
-    // جلب المستخدمين الذين دورهم 'customer' فقط
-    $customers = Customer::whereHas('user', function($query) {
-        $query->where('role', 'customer');
-    })->latest()->paginate(5);
-    $users = User::latest()->paginate(5);
-    return view('backend.customers.index', compact('customers','users'))
-                ->with('i', (request()->input('page', 1) - 1) * 5);
-
-        /*
-        $user = auth()->user();
-        $customers = Customer::latest()->paginate(5);
-        $users = User::latest()->paginate(5);
-        // تحقق مما إذا كان مديرًا وإذا لم يكن لديه معرف المستخدم (user_id)
-        if (auth()->user()->role === 'customer' ) {
-            $customers = Customer::latest()->paginate(5);
-        }
-
-        return view('backend.customers.index',compact('customers','users'))
-                    ->with('i', (request()->input('page', 1) - 1) * 5);
-                    */
+        // جلب المستخدمين الذين دورهم 'customer' فقط
+        $customers = Customer::whereHas('user', function($query) {
+            $query->where('role', 'customer');
+        });
+        $customers = Customer::All();
+      // dd($customers);
+        $users = User::All();
+        return view('backend.customers.index', compact('customers','users'));
     }
     /**
      * Show the form for creating a new resource.
@@ -44,7 +31,7 @@ class CustomerController extends Controller
     public function create(Request $request)
     {
                 // تحقق مما إذا كان مديرًا وإذا لم يكن لديه معرف المستخدم (user_id)
-        if (auth()->user()->role === 'admin' && !$request->has('user_id')) {
+        if ((auth()->user()->role === 'admin'  || auth()->user()->role === 'employee') && !$request->has('user_id')) {
             Auth::logout(); // تسجيل خروج المدير
             return redirect()->route('register')
                             ->with('info', 'Please create a new user account first.');
@@ -80,11 +67,11 @@ class CustomerController extends Controller
         ], $messages);
 
                     // التحقق من عمر المستخدم
-            $age = Carbon::parse($request->birthday)->age;
+        /*    $age = Carbon::parse($request->birthday)->age;
             if ($age < 18) {
                 return redirect()->back()->withErrors(['birthday' => 'You must be over 18 years of age to register.']);
             }
-
+*/
 
         // الحصول على المستخدم المسجل
         $user = auth()->user();

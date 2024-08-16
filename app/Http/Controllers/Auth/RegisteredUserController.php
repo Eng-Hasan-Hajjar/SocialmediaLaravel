@@ -43,13 +43,13 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
             'role' => $request->role,
         ]);
-
+//dd($request);
         event(new Registered($user));
 
         Auth::login($user);
 
       //  return redirect(RouteServiceProvider::HOME);
-      if( $user->role== 'employee') return redirect(RouteServiceProvider::HOME);
+      if( $user->role== 'employee' ) return redirect(RouteServiceProvider::HOME);
       else return redirect()->route('customers2.input');
          // تحديث هذا الجزء لتوجيه المستخدم إلى واجهة إدخال بيانات الزائر بعد تسجيل الدخول
     }

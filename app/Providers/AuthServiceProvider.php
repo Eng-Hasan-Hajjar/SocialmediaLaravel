@@ -20,7 +20,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         User::class => UserPolicy::class,
-        CarReservation::class => CarReservationPolicy::class,
+      //  CarReservation::class => CarReservationPolicy::class,
     ];
 
     /**
@@ -32,6 +32,7 @@ class AuthServiceProvider extends ServiceProvider
 
         // تعريف الصلاحيات باستخدام Gate
         Gate::define('isVisitor', [UserPolicy::class, 'isVisitor']);
+        Gate::define('isCustomer', [UserPolicy::class, 'isCustomer']);
         Gate::define('isEmployee', [UserPolicy::class, 'isEmployee']);
         Gate::define('isAdmin', [UserPolicy::class, 'isAdmin']);
     }

@@ -41,16 +41,16 @@
 
 
 
-         <div class="form-group row">
+         <div class="mt-4">
                 <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('role') }}</label>
 
-                <div class="col-md-6">
-                    <select id="role" class="form-control" name="role" required disabled>
-                        <option value="customer" selected> customer</option>
+                <div class="mt-4">
+                    <select id="role" class="form-control block mt-1 w-full" name="role" required>
+                        <option value="customer" > customer</option>
                         <option value="employee"> employee </option>
                     </select>
-                      <!-- حقل مخفي لضمان أن القيمة المرسلة دائمًا تكون "customer" -->
-                     <input type="hidden" name="role" value="customer">
+                      <!-- حقل مخفي لضمان أن القيمة المرسلة دائمًا تكون "customer"
+                     <input type="hidden" name="role" value="customer">-->
                 </div>
 
          </div>

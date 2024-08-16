@@ -83,10 +83,16 @@ class RecommendationController extends Controller
 
     public function recommend(Request $request)
     {
+        $messages = [
+            'platforms.required' => 'The platforms field is required.',
+            'category_id.required' => 'The category field is required.',
+
+
+        ];
         $request->validate([
             'platforms' => 'required|array|min:1',
             'category_id' => 'required|exists:categories,id',
-        ]);
+        ],$messages);
 
         $platforms = $request->input('platforms');
         $categoryId = $request->input('category_id');
