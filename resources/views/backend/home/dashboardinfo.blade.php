@@ -58,8 +58,7 @@
         }
 
         .bg-instagram {
-            background-color: #e4405f;
-        }
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 50%, #d6249f 75%, #285AEB 100%);        }
 
         .bg-youtube {
             background-color: #ff0000;
@@ -200,6 +199,12 @@
                     My Info <i class="fas fa-info-circle"></i>
                 </a>
             </div>
+            <!-- زر تقديم التوصية  -->
+            <div class="col-md-2 mb-4">
+                <a href="{{ url('/backend/recommendations') }}" class="btn btn-main-site action-button">
+                   get the best recommendations <i class="fas fa-home"></i>
+                </a>
+            </div>
             <!-- زر إنشاء المنتجات -->
             <div class="col-md-4 mb-12">
                 <a href="{{ route('products.create') }}" class="btn btn-create-product action-button">
@@ -210,84 +215,6 @@
     @endif
 </div>
 
-<style>
-    /* تنسيق الأزرار */
-    .btn-custom {
-        color: #fff;
-        font-size: 1rem;
-        font-weight: bold;
-        padding: 10px 15px;
-        border-radius: 50px;
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        border: none;
-        text-decoration: none;
-    }
-
-    .btn-custom i {
-        margin-right: 8px;
-        font-size: 1.2rem;
-    }
-
-    .btn-custom:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    /* ألوان الأزرار */
-    .btn-logout {
-        background-color: #dc3545; /* أحمر */
-    }
-
-    .btn-logout:hover {
-        background-color: #c82333;
-    }
-
-    .btn-profile {
-        background-color: #007bff; /* أزرق */
-    }
-
-    .btn-profile:hover {
-        background-color: #0056b3;
-    }
-
-    .btn-main-site {
-        background-color: #28a745; /* أخضر */
-    }
-
-    .btn-main-site:hover {
-        background-color: #218838;
-    }
-
-    .btn-info {
-        background-color: #17a2b8; /* تركواز */
-    }
-
-    .btn-info:hover {
-        background-color: #117a8b;
-    }
-
-    .btn-create-product {
-        background-color: #ffc107; /* أصفر */
-        color: #000;
-    }
-
-    .btn-create-product:hover {
-        background-color: #e0a800;
-    }
-
-    .action-button {
-        transition: background-color 0.3s ease, transform 0.3s ease;
-    }
-
-    /* تحسين التباعد بين الأعمدة */
-    .row > [class*='col-'] {
-        margin-bottom: 15px;
-    }
-</style>
 
 
 
@@ -295,24 +222,127 @@
     <div class="container mt-4 text-center">
         @if(Auth::user()->can('isEmployee') || Auth::user()->can('isAdmin'))
             <div class="row justify-content-center">
+
                 <div class="col-md-2">
+                    <i class="fab fa-youtube icon"></i>
+                    <a href="{{ route('youtube_channels.create') }}" class="btn btn-warning btn-block action-button">
+                        Create YouTube</a>
+                </div>
+                <div class="col-md-2">
+                    <i class="fab fa-instagram icon"></i>
+                    <a href="{{ route('instagram_accounts.create') }}" class="btn btn-info btn-block action-button">
+                        Create Instagram</a>
+                </div>
+                <div class="col-md-2">
+                    <i class="fab fa-facebook icon"></i>
+                    <a href="{{ route('facebook_pages.create') }}" class="btn btn-primary  btn-block action-button">
+                        Create Facebook </a>
+                </div>
+                <div class="col-md-2">
+                    <i class="fa fa-heart icon"></i>
+                    <a href="{{ url('/backend/recommendations') }}" class="btn btn-main-site action-button">
+                        Get recommend
+                     </a>
+                </div>
+
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-md-2">
+                    <i class="fas fa-home "></i>
+                    <a href="{{ url('/') }}" class="btn btn-success btn-block action-button">Site</a>
+                </div>
+                <div class="col-md-2">
+                    <i class=" fas fa-list"></i>
                     <a href="{{ route('categories.create') }}" class="btn btn-success btn-block action-button">Create Categories</a>
                 </div>
                 <div class="col-md-2">
+                    <i class=" fas fa-box"></i>
                     <a href="{{ route('products.create') }}" class="btn btn-danger btn-block action-button">Create Products</a>
                 </div>
-                <div class="col-md-2">
-                    <a href="{{ route('youtube_channels.create') }}" class="btn btn-warning btn-block action-button">Create YouTube Channels</a>
-                </div>
-                <div class="col-md-2">
-                    <a href="{{ route('instagram_accounts.create') }}" class="btn btn-info btn-block action-button">Create Instagram Accounts</a>
-                </div>
-                <div class="col-md-2">
-                    <a href="{{ route('facebook_pages.create') }}" class="btn btn-primary btn-block action-button">Create Facebook Pages</a>
-                </div>
             </div>
+
         @endif
     </div>
+    <style>
+        /* تنسيق الأزرار */
+        .btn-custom {
+            color: #fff;
+            font-size: 1rem;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            border: none;
+            text-decoration: none;
+        }
+
+        .btn-custom i {
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+
+        .btn-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ألوان الأزرار */
+        .btn-logout {
+            background-color: #dc3545; /* أحمر */
+        }
+
+        .btn-logout:hover {
+            background-color: #c82333;
+        }
+
+        .btn-profile {
+            background-color: #007bff; /* أزرق */
+        }
+
+        .btn-profile:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-main-site {
+            background-color: #28a745; /* أخضر */
+        }
+
+        .btn-main-site:hover {
+            background-color: #218838;
+        }
+
+        .btn-info {
+            background-color: #17a2b8; /* تركواز */
+        }
+
+        .btn-info:hover {
+            background-color: #117a8b;
+        }
+
+        .btn-create-product {
+            background-color: #ffc107; /* أصفر */
+            color: #000;
+        }
+
+        .btn-create-product:hover {
+            background-color: #e0a800;
+        }
+
+        .action-button {
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        /* تحسين التباعد بين الأعمدة */
+        .row > [class*='col-'] {
+            margin-bottom: 15px;
+        }
+    </style>
+
 
     <!-- إضافة Bootstrap و Font Awesome JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

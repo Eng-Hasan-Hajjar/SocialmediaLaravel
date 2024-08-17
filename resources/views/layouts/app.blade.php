@@ -26,30 +26,15 @@
 </head>
 <body class="font-sans antialiased" id="body"  style=" direction: rtl;text-align:right">
     <div class="min-h-screen">
-        @include('layouts.navigation')
-
-        <!-- Page Heading -->
-        @if (isset($header))
-            <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    <!-- Header content here -->
-                </div>
-            </header>
-        @endif
-
         <!-- Page Content -->
         <main>
             @include('backend.home.dashboardinfo')
         </main>
-
-
         <div class="col-md-12">
             <div class="card">
 
             </div>
         </div>
     </div>
-
-
 </body>
 </html>

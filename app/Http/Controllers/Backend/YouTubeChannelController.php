@@ -43,7 +43,6 @@ class YouTubeChannelController extends Controller
             'subscribers_count' => $request->subscribers_count,
             'category_id' => $request->category_id,
             'location' => $request->location,
-
             'image'  =>  $new_name,
         );
        // dd($form_data);
@@ -126,11 +125,12 @@ class YouTubeChannelController extends Controller
 
         return view('backend.youtube_channels.index', compact('youtubeChannels', 'categories'));
     }
-    public function show(YouTubeChannel $youTubeChannel)
-{
-    $youTubeChannel->load('category');
-    return view('backend.youtube_channels.show', compact('youTubeChannel'));
-}
+    public function show(YouTubeChannel $youtubeChannel)
+    {
+        $youtubeChannel->load('category');
+        $categories = Category::all();
+        return view('backend.youtube_channels.show', compact('youtubeChannel', 'categories'));
+    }
 
 
 

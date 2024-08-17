@@ -7,19 +7,27 @@
 
         <div class="card">
             <div class="card-header">
-                {{ $youTubeChannel->name }}
+                {{ $youtubeChannel->name }}
             </div>
             <div class="card-body">
-                <p><strong>URL:</strong> <a href="{{ $youTubeChannel->url }}" target="_blank">{{ $youTubeChannel->url }}</a></p>
-                <p><strong>Description:</strong> {{ $youTubeChannel->description }}</p>
-                <p><strong>Subscribers Count:</strong> {{ $youTubeChannel->subscribers_count }}</p>
-                <p><strong>Category:</strong> {{ $youTubeChannel->category->name }}</p>
+                <p><strong>URL:</strong> <a href="{{ $youtubeChannel->url }}" target="_blank">{{ $youtubeChannel->url }}</a></p>
+                <p><strong>Description:</strong> {{ $youtubeChannel->description }}</p>
+                <p><strong>Subscribers Count:</strong> {{ $youtubeChannel->subscribers_count }}</p>
                 <p><strong>Location (Country):</strong> {{ $youtubeChannel->location }}</p>
-                    @if ($youTubeChannel->image)
+
+                <p><strong>Category:</strong>
+                    @foreach($categories as $category)
+                        @if ($category->id  == $youtubeChannel->category_id)
+                         {{ $category->name }}
+                          @endif
+                     @endforeach
+                </p>
+
+                    @if ($youtubeChannel->image)
                         <div class="row mb-3">
                             <div class="col">
                                 <strong>Image:</strong>
-                                <img src="{{ URL::to('/') }}/images/{{ $youTubeChannel->image }}" class="img-thumbnail" style="width: 300px; height: auto;" />
+                                <img src="{{ URL::to('/') }}/images/{{ $youtubeChannel->image }}" class="img-thumbnail" style="width: 300px; height: auto;" />
 
                             </div>
                         </div>

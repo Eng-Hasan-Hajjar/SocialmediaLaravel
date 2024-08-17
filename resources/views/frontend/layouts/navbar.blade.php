@@ -35,6 +35,8 @@
                         {{ Auth::user()->name }}
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a>
+
                         <a class="dropdown-item" href="{{ route('profile.edit') }}">My Profile</a>
                         <div class="dropdown-divider"></div>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

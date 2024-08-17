@@ -97,9 +97,14 @@ class RecommendationController extends Controller
         $platforms = $request->input('platforms');
         $categoryId = $request->input('category_id');
 
-        // الحصول على الموقع الحالي للمستخدم عبر علاقته مع جدول الزبائن
-        $location = auth()->user()->customer->current_location;
-
+        if((auth()->user()->customer)!=null){
+            // الحصول على الموقع الحالي للمستخدم عبر علاقته مع جدول الزبائن
+            $location = auth()->user()->customer->current_location;
+        }
+        else
+        {
+            $location = 'حلب';
+        }
         $allRecommendations = collect(); // استخدم collection لجمع التوصيات من المنصات المختلفة
 
         foreach ($platforms as $platform) {

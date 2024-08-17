@@ -20,22 +20,9 @@ use App\Http\Controllers\Backend\YouTubeChannelController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\RecommendationController;
 
-
-
-
-
 Route::get('/', function () {
     return view('frontend.index');
-});
-
-
-
-Route::get('ratings', [RatingController::class, 'index'])->name('ratings.index');
-Route::post('/ratings', [RatingController::class, 'store'])->name('ratings.store');
-
-
-
-
+})->name('mainSite');
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');

@@ -51,11 +51,7 @@
                         <label for="birthday">birthday:  </label>
                         <input type="date" name="birthday" class="form-control" id="birthday" value="{{$customer->birthday  }}">
                     </div>
-                    <div class="form-group">
-                        <label for="driving_license_number">driving license number:  </label>
-                        <input type="text" class="form-control" name="driving_license_number" id="driving_license_number"value="{{$customer->driving_license_number  }}" required>
-                    </div>
-
+       
 
 
                     <button type="submit" class="btn btn-primary"> save </button>

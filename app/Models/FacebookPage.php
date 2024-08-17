@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 class FacebookPage extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'url', 'description', 'followers_count', 'category_id' , 'location'  ];
+    protected $fillable = ['name', 'url', 'description', 'followers_count', 'category_id' , 'location','image'  ];
 
     public function category()
     {

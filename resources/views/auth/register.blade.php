@@ -42,19 +42,15 @@
 
 
          <div class="mt-4">
-                <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('role') }}</label>
+            <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
 
-                <div class="mt-4">
-                    <select id="role" class="form-control block mt-1 w-full" name="role" required>
-                        <option value="customer" > customer</option>
-                        <option value="employee"> employee </option>
-                    </select>
-                      <!-- حقل مخفي لضمان أن القيمة المرسلة دائمًا تكون "customer"
-                     <input type="hidden" name="role" value="customer">-->
-                </div>
-
-         </div>
-
+            <div class="mt-4">
+                <select id="role" class="form-control block mt-1 w-full" name="role" required>
+                    <option value="customer">Customer</option>
+                    <option value="employee">Employee</option>
+                </select>
+            </div>
+        </div>
 
 
         <div class="flex items-center justify-end mt-4">

@@ -32,11 +32,28 @@ class FacebookPageController extends Controller
             'followers_count' => 'required|integer',
             'category_id' => 'required|exists:categories,id',
             'location' => 'nullable|string|max:255',
-            'image' => 'nullable|image|max:2048',
+            'image' => 'required|image|max:2048',
         ]);
-        $image = $request->file('image');
-        $new_name = rand() . '.' . $image->getClientOriginalExtension();
-        $image->move(public_path('images'), $new_name);
+          // معالجة الصورة إذا تم تحميلها
+        $new_name = null;
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $new_name = time() . '_' . rand() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('images'), $new_name);
+        }
+
+
+        // إنشاء السجل في قاعدة البيانات
+        FacebookPage::create([
+            'name' => $request->name,
+            'url' => $request->url,
+            'description' => $request->description,
+            'followers_count' => $request->followers_count,
+            'category_id' => $request->category_id,
+            'location' => $request->location,
+            'image' => $new_name, // تخزين اسم الصورة في قاعدة البيانات
+        ]);
+
 
         $form_data = array(
             'name' => $request->name,
@@ -48,9 +65,9 @@ class FacebookPageController extends Controller
 
             'image'  =>  $new_name,
         );
-       // dd($form_data);
+      //   dd($form_data);
 
-       FacebookPage::create($form_data);
+      // FacebookPage::create($form_data);
        // FacebookPage::create($request->all());
 
         return redirect()->route('facebook_pages.index')->with('success', 'Facebook Page created successfully.');
