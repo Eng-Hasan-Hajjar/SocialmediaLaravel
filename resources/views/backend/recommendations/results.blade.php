@@ -6,12 +6,16 @@
 
 
 @section('content')
+
+
 <div class="container my-5">
     <h1 class="text-center mb-4">Recommendation Results</h1>
     <a href="{{ route('recommendations.index') }}" class="btn btn-outline-primary mb-4">
         <i class="fas fa-arrow-left"></i> Back to Recommendations
     </a>
-
+    <a href="{{ route('dashboard') }}" class="btn btn-outline-primary mb-4">
+        <i class="fas fa-arrow-left"></i> Dashboard
+    </a>
     @foreach ($allRecommendations->groupBy('platform') as $platform => $recommendations)
         <div class="mb-5">
             <h2 class="text-secondary  text-center    @if ($platform == 'facebook')
@@ -45,6 +49,15 @@
                                 <p class="card-text">
                                     <strong>Location:</strong> {{ $recommendation->location }}
                                 </p>
+                                @if ($recommendation->image)
+                                    <div class="row mb-3">
+                                        <div class="col">
+                                            <strong>profile:</strong>
+                                            <img src="{{ URL::to('/') }}/images/{{ $recommendation->image }}" class="img-thumbnail" style="width: 300px; height: auto;" />
+
+                                        </div>
+                                    </div>
+                                @endif
                             </div>
                             <div class="card-footer text-center">
                                 <a href="

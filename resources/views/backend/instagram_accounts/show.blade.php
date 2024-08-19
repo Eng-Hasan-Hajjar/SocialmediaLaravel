@@ -3,6 +3,9 @@
 @section('content')
     <div class="container">
         <h1>Instagram Account Details</h1>
+        <a href="{{ route('dashboard') }}" class="btn btn-outline-primary mb-3">
+            <i class="fas fa-arrow-left"></i> Dashboard
+        </a>
         <a href="{{ route('instagram_accounts.index') }}" class="btn btn-primary mb-3">Back to List</a>
 
         <div class="card">
@@ -23,7 +26,7 @@
 
                         </div>
                     </div>
-                
+
             </div>
         </div>
     </div>

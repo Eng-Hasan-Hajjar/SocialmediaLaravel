@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container">
+   
         <h1>Create Facebook Page</h1>
 
             <form action="{{ route('facebook_pages.store') }}" method="POST" enctype="multipart/form-data" >

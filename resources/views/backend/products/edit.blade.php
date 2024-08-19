@@ -2,6 +2,9 @@
 
 @section('content')
     <div class="container">
+        <a href="{{ route('dashboard') }}" class="btn btn-outline-primary mb-4">
+            <i class="fas fa-arrow-left"></i> Dashboard
+        </a>
         <h1>Edit Product</h1>
 
         <form action="{{ route('products.update', $product->id) }}" method="POST" enctype="multipart/form-data">

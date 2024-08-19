@@ -2,6 +2,9 @@
 
 @section('content')
     <div class="container">
+        <a href="{{ route('dashboard') }}" class="btn btn-outline-primary mb-4">
+            <i class="fas fa-arrow-left"></i> Dashboard
+        </a>
         <h1>Create Product</h1>
 
         <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
@@ -33,6 +36,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Create Product</button>
+
         </form>
     </div>
 @endsection
