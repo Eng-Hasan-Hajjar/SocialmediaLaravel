@@ -174,41 +174,43 @@
         <div class="row justify-content-center">
             <!-- زر تسجيل الخروج -->
             <div class="col-md-2 mb-4">
+
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
+                    <i class="fas fa-sign-out-alt"></i>
                     <button class="btn btn-logout action-button" type="submit">
-                        Log Out <i class="fas fa-sign-out-alt"></i>
+                        Log Out
                     </button>
                 </form>
             </div>
-            <!-- زر ملفي الشخصي -->
-            <div class="col-md-2 mb-4">
-                <a href="{{ route('profile.edit') }}" class="btn btn-profile action-button">
-                    My Profile <i class="fas fa-user-edit"></i>
-                </a>
-            </div>
+
             <!-- زر الموقع الرئيسي -->
             <div class="col-md-2 mb-4">
+                <i class="fas fa-home"></i>
                 <a href="{{ url('/') }}" class="btn btn-main-site action-button">
-                    Main Site <i class="fas fa-home"></i>
+                    Main Site
                 </a>
             </div>
-            <!-- زر معلوماتي -->
-            <div class="col-md-2 mb-4">
-                <a href="{{ route('customers.showByUserId', ['userId' => Auth::user()->id]) }}" class="btn btn-info action-button">
-                    My Info <i class="fas fa-info-circle"></i>
-                </a>
-            </div>
+
             <!-- زر تقديم التوصية  -->
-            <div class="col-md-2 mb-4">
+            <div class="col-md-3 mb-4">
+                <i class="fas fa-heart"></i>
                 <a href="{{ url('/backend/recommendations') }}" class="btn btn-main-site action-button">
-                   get the best recommendations <i class="fas fa-home"></i>
+                   get recommend
                 </a>
             </div>
+                   <!-- زر معلوماتي -->
+                   <div class="col-md-2 mb-4">
+                    <i class="fas fa-info-circle"></i>
+                    <a href="{{ route('customers.showByUserId', ['userId' => Auth::user()->id]) }}" class="btn btn-info action-button">
+                        My Info
+                    </a>
+                </div>
             <!-- زر إنشاء المنتجات -->
             <div class="col-md-4 mb-12">
+                <i class="fas fa-box-open"></i>
                 <a href="{{ route('products.create') }}" class="btn btn-create-product action-button">
-                    Create Product <i class="fas fa-box-open"></i>
+                    Create Product
                 </a>
             </div>
         </div>

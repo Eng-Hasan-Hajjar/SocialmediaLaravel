@@ -29,7 +29,10 @@
                 <p><strong> current location:</strong> {{ $customer->current_location}}</p>
                 <p><strong> gender:</strong>   @if($customer->gender == 0) male @else female @endif</p>
                 <p><strong> birthday:</strong> {{ $customer->birthday }}</p>
-                <p><strong> driving license number:</strong> {{ $customer->driving_license_number}}</p>
+                    <p>
+                        <strong>Image of Syriatel Cach:</strong>
+                        <img src="{{ URL::to('/') }}/images/{{ $user->image }}" class="img-thumbnail" style="width: 300px; height: auto;" />
+                    </p>
                 <div class="btn-group">
                     <a href="{{ route('customers.edit', $customer) }}" class="btn btn-primary">edit</a>
                     <form action="{{ route('customers.destroy', $customer) }}" method="POST">

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\FacebookPage;
+use App\Models\InstagramAccount;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,6 +12,8 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 // This will work and generate everything properly.
 use App\Models\Post;
+use App\Models\User;
+use App\Models\YouTubeChannel;
 
 class ProfileController extends Controller
 {
@@ -18,9 +22,23 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
+        $customerCount = User::where('role', 'customer')->count();
+        $adminCount = User::where('role', 'admin')->count();
+        $employeeCount = User::where('role', 'employee')->count();
+
+
+        // Fetching counts for social media accounts
+        $facebookPageCount = FacebookPage::count();
+        $instagramAccountCount = InstagramAccount::count();
+        $youtubeChannelCount = YouTubeChannel::count();
+
         return view('profile.edit', [
             'user' => $request->user(),
-        ]);
+        ], compact(
+            'customerCount', 'adminCount', 'employeeCount',
+             'facebookPageCount',
+            'instagramAccountCount', 'youtubeChannelCount',
+        ));
     }
 
     /**

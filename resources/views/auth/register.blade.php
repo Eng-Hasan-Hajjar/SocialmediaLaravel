@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}" style=" direction: ltr;">
+    <form method="POST" action="{{ route('register') }}" style=" direction: ltr;" enctype="multipart/form-data">
         @csrf
 
         <!-- Name -->
@@ -52,9 +52,12 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="image">الصورة </label>
-            <input type="file" class="form-control" id="image" name="image">
+        <div class="mt-4">
+            <label for="image" class="col-md-4 col-form-label text-md-right">Image of Syriatel Cash </label>
+            <div class="mt-4">
+                <input type="file" class="form-control" id="image" name="image">
+
+            </div>
         </div>
 
         <div class="flex items-center justify-end mt-4">

@@ -1,2 +1,2 @@
 
-<img src="images/logo.png"  width="40%;" height="40%" style="position: center;margin-left:33%;">
+<img src="images/logo.png"  width="10%;" height="10%" style="margin:10px;position: center;margin-left:40%;">

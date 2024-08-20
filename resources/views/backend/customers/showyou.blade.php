@@ -66,7 +66,10 @@
 
                         </td>
                         <td>
-
+                            <p>
+                                <strong>Image of Syriatel Cach:</strong>
+                                <img src="{{ URL::to('/') }}/images/{{ $user->image }}" class="img-thumbnail" style="width: 300px; height: auto;" />
+                            </p>
                         </td>
 
                     </tr>

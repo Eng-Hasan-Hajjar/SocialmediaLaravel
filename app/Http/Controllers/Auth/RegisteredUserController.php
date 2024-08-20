@@ -35,7 +35,7 @@ class RegisteredUserController extends Controller
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'role' => ['required', 'string'],
-            'image' => 'required|image|max:2048',
+            'image' => ['required','image','max:2048'],
         ]);
         // معالجة الصورة إذا تم تحميلها
         $new_name = null;
