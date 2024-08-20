@@ -35,13 +35,22 @@ class RegisteredUserController extends Controller
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'role' => ['required', 'string'],
+            'image' => 'required|image|max:2048',
         ]);
+        // معالجة الصورة إذا تم تحميلها
+        $new_name = null;
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $new_name = time() . '_' . rand() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('images'), $new_name);
+        }
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role' => $request->role,
+            'image' => $new_name,
         ]);
 //dd($request);
         event(new Registered($user));
