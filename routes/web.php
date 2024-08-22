@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminDashboardController;
 
 use App\Http\Controllers\CustomerController;
 
+use App\Http\Controllers\Admin\UserManagementController;
 
 
 
@@ -43,6 +44,14 @@ Route::get('/n', function () {
 Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 
 Route::middleware('auth')->group(function () {
+
+    Route::get('/users', [UserManagementController::class, 'index'])->name('users.index');
+    Route::patch('/users/{user}/approve', [UserManagementController::class, 'approve'])->name('users.approve');
+    Route::patch('/users/{user}/disapprove', [UserManagementController::class, 'disapprove'])->name('users.disapprove');
+    Route::get('/user/{userId}', [UserManagementController::class, 'showByUserId'])->name('users.showByUserId');
+
+
+
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
 });
 
@@ -73,10 +82,90 @@ Route::prefix('backend')->group(function() {
 
     Route::resource('categories', CategoryController::class);
 
-    Route::resource('recommendations', RecommendationController::class);
+
 
 });
 
 
 
 Route::post('/recommend', [RecommendationController::class, 'recommend'])->name('recommendations.recommend');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// المجموعة التي تشمل كل المسارات الخاصة بالإدارة
+Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/users', [UserManagementController::class, 'index'])->name('users.index');
+    Route::patch('/users/{user}/approve', [UserManagementController::class, 'approve'])->name('users.approve');
+    Route::patch('/users/{user}/disapprove', [UserManagementController::class, 'disapprove'])->name('users.disapprove');
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+Route::get('/admin/approve-users', [AdminDashboardController::class, 'approveUsers'])->name('admin.approve_users');
+Route::post('/admin/approve-user/{id}', [AdminDashboardController::class, 'approveUser'])->name('admin.approve_user');
+
+
+
+Route::group(['middleware' => ['auth', 'approved']], function () {
+
+    Route::resource('backend/recommendations', RecommendationController::class);
+ //   Route::get('/some-restricted-page', [SomeController::class, 'restrictedPage'])->name('restricted.page');
+});
+
+
+Route::get('/approval-required', function () {
+    return view('auth.approval_required');
+})->name('approval_required');

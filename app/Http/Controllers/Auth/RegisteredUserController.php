@@ -61,5 +61,15 @@ class RegisteredUserController extends Controller
       if( $user->role== 'employee' ) return redirect(RouteServiceProvider::HOME);
       else return redirect()->route('customers2.input');
          // تحديث هذا الجزء لتوجيه المستخدم إلى واجهة إدخال بيانات الزائر بعد تسجيل الدخول
-    }
+
+  }
+
+  protected function authenticated(Request $request, $user)
+  {
+      if (!$user->is_approved) {
+          Auth::logout();
+          return redirect()->route('approval_required');
+      }
+  }
+
 }

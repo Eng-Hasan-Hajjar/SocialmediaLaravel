@@ -193,19 +193,33 @@
             </div>
 
             <!-- زر تقديم التوصية  -->
-            <div class="col-md-3 mb-4">
-                <i class="fas fa-heart"></i>
-                <a href="{{ url('/backend/recommendations') }}" class="btn btn-main-site action-button">
-                   get recommend
-                </a>
-            </div>
-                   <!-- زر معلوماتي -->
-                   <div class="col-md-2 mb-4">
-                    <i class="fas fa-info-circle"></i>
-                    <a href="{{ route('customers.showByUserId', ['userId' => Auth::user()->id]) }}" class="btn btn-info action-button">
-                        My Info
+
+            @if(Auth::user()->is_approved)
+                <div class="col-md-3 mb-4">
+                    <i class="fas fa-heart"></i>
+                    <a href="{{ url('/backend/recommendations') }}" class="btn btn-main-site action-button">
+                        get recommend
                     </a>
                 </div>
+            @else
+                <div class="col-md-3 mb-4">
+                    <i class="fas fa-heart"></i>
+                    <button class="btn btn-secondary action-button" disabled>
+                        get recommend
+                    </button>
+                    <p class="text-danger mt-2">Your account is pending approval.</p>
+                </div>
+            @endif
+
+
+
+                <!-- زر معلوماتي -->
+            <div class="col-md-2 mb-4">
+                <i class="fas fa-info-circle"></i>
+                <a href="{{ route('customers.showByUserId', ['userId' => Auth::user()->id]) }}" class="btn btn-info action-button">
+                    My Info
+                </a>
+            </div>
             <!-- زر إنشاء المنتجات -->
             <div class="col-md-4 mb-12">
                 <i class="fas fa-box-open"></i>

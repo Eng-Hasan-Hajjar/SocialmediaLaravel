@@ -32,4 +32,18 @@ class AdminDashboardController extends Controller
             'instagramAccountCount', 'youtubeChannelCount',
         ));
     }
+    public function approveUsers()
+    {
+        $users = User::where('is_approved', false)->get();
+        return view('admin.approve_users', compact('users'));
+    }
+
+    public function approveUser($id)
+    {
+        $user = User::findOrFail($id);
+        $user->is_approved = true;
+        $user->save();
+
+        return redirect()->route('admin.approve_users')->with('success', 'User approved successfully.');
+    }
 }
