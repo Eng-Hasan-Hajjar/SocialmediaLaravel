@@ -101,7 +101,8 @@ class CustomerController extends Controller
         if (!$customer) {
             return redirect()->route('customers2.input')->with('error','Visitor information not found, please complete the data.');
         }
-        return view('backend.customers.showyou', compact('customer'));
+        $user = User::where('id', $userId)->first();
+        return view('backend.customers.showyou', compact('customer','user'));
     }
 
     /**
