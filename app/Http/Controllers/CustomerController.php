@@ -110,7 +110,8 @@ class CustomerController extends Controller
      */
     public function edit(Customer $customer)
     {
-        return view('backend.customers.edit',compact('customer'));
+        $user = User::where('id', Auth::user()->id)->first();
+        return view('backend.customers.edit',compact('customer','user'));
     }
     public function edityou(Customer $customer)
     {
@@ -121,6 +122,14 @@ class CustomerController extends Controller
      */
     public function update(Request $request, Customer $customer)
     {
+         /// syriatel cash
+ $new_name = null;
+
+ $image = $request->file('image');
+ $new_name = time() . '_' . rand() . '.' . $image->getClientOriginalExtension();
+ $image->move(public_path('images'), $new_name);
+
+
         $messages = [
             'name.required' => 'The name field is required.',
             'phone.required' => 'The phone number field is required.',
@@ -133,6 +142,8 @@ class CustomerController extends Controller
             'birthday.required' => 'The date of birth field is required.',
         ];
 
+
+
         $request->validate([
             'phone'=> 'required|numeric',
             'work'=>  'required',
@@ -143,7 +154,21 @@ class CustomerController extends Controller
 
         ], $messages);
 
-        $customer->update($request->all());
+
+
+
+ //dd($new_name);
+ $user = User::where('id', Auth::user()->id)->first();
+   // $user = User::where(Auth::user()->id,$customer->user_id);
+    $user ->update([
+        'image' => $new_name,
+    ]);
+    $customer->update($request->all());
+//dd($user);
+
+
+
+
 
         if (Auth::user()->role === 'customer') {
             return redirect()->route('dashboard')

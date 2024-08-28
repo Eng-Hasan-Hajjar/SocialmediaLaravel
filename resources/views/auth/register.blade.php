@@ -1,4 +1,10 @@
 <x-guest-layout>
+
+    <label for="image" class="col-md-4 col-form-label text-md-center"
+style="  text-shadow: 2px 2px 5px red;"
+
+    >Please pay to Syriatel Cash account on <strong style="  text-shadow: 2px 2px 5px rgb(194, 250, 10);"> 0938706830 </strong>to benefit from our website services. After you pay, please attach a photo proving the transfer of the amount in the designated place below. </label>
+
     <form method="POST" action="{{ route('register') }}" style=" direction: ltr;" enctype="multipart/form-data">
         @csrf
 
@@ -53,6 +59,7 @@
         </div>
 
         <div class="mt-4">
+
             <label for="image" class="col-md-4 col-form-label text-md-right">Image of Syriatel Cash </label>
             <div class="mt-4">
                 <input type="file" class="form-control" id="image" name="image">

@@ -30,13 +30,22 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        $messages = [
+            'name.required' => 'The name field is required.',
+            'email.required' => 'The email field is required.',
+
+            'password.required' => 'The password field is required.',
+            'role.required' => 'The role field is required.',
+
+
+        ];
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'role' => ['required', 'string'],
             'image' => ['image','max:2048'],
-        ]);
+        ],$messages);
         // معالجة الصورة إذا تم تحميلها
         $new_name = null;
         if ($request->hasFile('image')) {

@@ -19,7 +19,7 @@
             <div class="card-header">edit </div>
 
             <div class="card-body">
-                <form method="POST" action="{{ route('customers.update', $customer) }}">
+                <form method="POST" action="{{ route('customers.update', $customer) }}"  enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="form-group">
@@ -51,7 +51,15 @@
                         <label for="birthday">birthday:  </label>
                         <input type="date" name="birthday" class="form-control" id="birthday" value="{{$customer->birthday  }}">
                     </div>
-       
+
+                    <div class="mt-4">
+
+                        <label for="image" class="col-md-4 col-form-label text-md-right">Image of Syriatel Cash </label>
+                        <div class="mt-4">
+                            <input type="file" class="form-control" id="image" name="image"value="{{$user->image  }}">
+
+                        </div>
+                    </div>
 
 
                     <button type="submit" class="btn btn-primary"> save </button>
