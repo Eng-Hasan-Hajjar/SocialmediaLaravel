@@ -29,6 +29,7 @@
 
 {{-- users --}}
 
+@if (Auth::user()->can('isAdmin'))
 
 
   <li class="nav-item has-treeview">
@@ -56,7 +57,7 @@
 
     </ul>
   </li>
-
+  @endif
 {{-- Customer --}}
 
 
@@ -198,7 +199,6 @@
   </li>
 
 {{--  Instagram Accounts --}}
-@if (Auth::user()->can('isAdmin'))
 
 <li class="nav-item has-treeview">
     <a href="#" class="nav-link">
@@ -229,7 +229,7 @@
     </ul>
   </li>
 
-@endif
+
 
 
 

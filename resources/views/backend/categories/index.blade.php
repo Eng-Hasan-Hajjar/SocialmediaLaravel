@@ -1,9 +1,9 @@
 @extends(Auth::user()->can('isEmployee') || Auth::user()->can('isAdmin') ? 'admin.layouts.layout' : 'admin.layouts.layoutvisitor')
 
 @section('content')
-
+<div style="margin-left:20px">
     <h2>Categories</h2>
-    <a href="{{ route('categories.create') }}" class="btn btn-primary">Create Category</a>
+    <a style="margin:20px" href="{{ route('categories.create') }}" class="btn btn-primary">Create Category</a>
     <table class="table">
         <thead>
             <tr>
@@ -25,4 +25,6 @@
             @endforeach
         </tbody>
     </table>
+
+</div>
 @endsection

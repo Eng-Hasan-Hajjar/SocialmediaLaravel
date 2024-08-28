@@ -1,8 +1,8 @@
 @extends(Auth::user()->can('isEmployee') || Auth::user()->can('isAdmin') ? 'admin.layouts.layout' : 'admin.layouts.layoutvisitor')
 
 @section('content')
-    <div class="container">
-   
+    <div class="container" style="margin-left:20px; padding-right:30px">
+
         <h1>Create Facebook Page</h1>
 
             <form action="{{ route('facebook_pages.store') }}" method="POST" enctype="multipart/form-data" >
