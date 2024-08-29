@@ -1,10 +1,136 @@
+## Eng Hasan Hajjar
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## Interfaces of Impact Makers
+<p align="center">
+<img src="interfaces/register final.PNG" alt="r">
+
+</p>
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+
+اذا أراد المستخدم الدفع ذلك  بعد التسجيل.
+
+<img src="interfaces/اذا أراد المستخدم الدفع ذلك  بعد التسجيل.PNG" alt="r">
+
+</p>
+<p align="center">
+
+التبوبات الرئيسية في لوحة التحكم للمدير.
+
+
+<img src="interfaces/التبوبات الرئيسية في لوحة التحكم للمدير.PNG" alt="r">
+
+</p>
+<p align="center">
+
+التحكم بالموافقة على طلب سيرياتل والسماح للمستخدم باستخدام الخوارزمية.
+
+<img src="interfaces/التحكم بالموافقة على طلب سيرياتل والسماح للمستخدم باستخدام الخوارزمية.PNG" alt="r">
+
+</p>
+<p align="center">
+الواجهة الرئيسية للموقع.
+
+<img src="interfaces/الواجهة الرئيسية للموقع.PNG" alt="r">
+
+</p>
+
+<p align="center">
+انشاء فئة .
+
+<img src="interfaces/انشاء فئة .PNG" alt="r">
+
+</p>
+<p align="center">
+تفااصيل صفحة  الفيس.
+
+<img src="interfaces/تفااصيل صفحة  الفيس.PNG" alt="r">
+
+</p>
+<p align="center">
+صفحة المنتج.
+
+<img src="interfaces/صفحة المنتج.PNG" alt="r">
+
+</p>
+<p align="center">
+<img src="interfaces/صفحة انشاء حساب الانستغرام.PNG" alt="r">
+
+</p>
+<p align="center">
+في حال عدم الموافقة على الزبون لايمكن الاستفادة من الموقع.
+<img src="interfaces/في حال عدم الموافقة على الزبون لايمكن الاستفادة من الموقع.PNG" alt="r">
+
+</p>
+<p align="center">
+قنوات اليوتيوب في الموقع.
+
+<img src="interfaces/قنوات اليوتيوب في الموقع.PNG" alt="r">
+
+</p>
+<p align="center">
+لوحة التحكم للزبون.
+<img src="interfaces/لوحة التحكم للزبون.PNG" alt="r">
+
+</p>
+<p align="center">
+مدخلات الخوارزمية.
+<img src="interfaces/مدخلات الخوارزمية.PNG" alt="r">
+
+</p>
+<p align="center">
+معلومات المستخدم بوجود سيرياتل كاش.
+<img src="interfaces/معلومات المستخدم بوجود سيرياتل كاش.PNG" alt="r">
+
+</p>
+
+
+<p align="center">
+معلومات عن الزائر وصورة لدفع عبر الsyriatel cash.
+<img src="interfaces/معلومات عن الزائر وصورة لدفع عبر الsyriatel cash.PNG" alt="r">
+
+</p>
+<p align="center">
+واجهة الفئات.
+<img src="interfaces/واجهة الفئات.PNG" alt="r">
+
+</p>
+<p align="center">
+واجهة انشاء المنتج من أجل الزبون.
+<img src="interfaces/واجهة انشاء المنتج من أجل الزبون.PNG" alt="r">
+
+</p>
+<p align="center">
+واجهة انشاء صفحة فيس بوك .
+<img src="interfaces/واجهة انشاء صفحة فيس بوك .PNG" alt="r">
+
+</p>
+<p align="center">
+واجهة انشاء قناة يوبيتويب.
+<img src="interfaces/واجهة انشاء قناة يوبيتويب.PNG" alt="r">
+
+</p>
+<p align="center">
+واجهة تسجيل الحساب.
+<img src="interfaces/واجهة تسجيل الحساب.PNG" alt="r">
+
+</p>
+<p align="center">
+واجهة تنفيذ الخوارزمية.
+<img src="interfaces/واجهة تنفيذ الخوارزمية.PNG" alt="r">
+
+</p>
+<p align="center">
+واجهة صفحات الفيس.
+<img src="interfaces/واجهة صفحات الفيس.PNG" alt="r">
+
+</p>
+
+<p align="center">
+واجهة لوحة التحكم الخاصة بالموظف.
+<img src="interfaces/واجهة لوحة التحكم الخاصة بالموظف.PNG" alt="r">
+
 </p>
 
 ## About Laravel
