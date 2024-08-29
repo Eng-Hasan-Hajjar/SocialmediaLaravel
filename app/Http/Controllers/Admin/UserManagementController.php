@@ -6,13 +6,29 @@ use App\Http\Controllers\Controller;
 use App\Models\Customer;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserManagementController extends Controller
 {
        // عرض المستخدمين في لوحة الإدارة
        public function index()
        {
-           $users = User::all();
+        if (Auth::user()->role === 'admin' || Auth::user()->role === 'employee') {
+            $iduser=Auth::user()->id;
+            $user = User::findOrFail($iduser);
+            $user->is_approved = true;
+            $user->save();
+        }
+        $users = User::all();
+        foreach($users as $user){
+            if ($user->role === 'admin' || $user->role === 'employee') {
+                $user->is_approved = true;
+                $user->save();
+            }
+        }
+
+
+
            return view('admin.users.index', compact('users'));
        }
        public function showByUserId($userId)
@@ -29,7 +45,7 @@ class UserManagementController extends Controller
             return view('admin.users.view', compact('user','customer','users'));
         }
 
-        
+
        // الموافقة على المستخدم
        public function approve(User $user)
        {

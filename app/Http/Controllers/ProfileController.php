@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 // This will work and generate everything properly.
-use App\Models\Post;
+
 use App\Models\User;
 use App\Models\YouTubeChannel;
 

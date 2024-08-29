@@ -11,73 +11,31 @@ use App\Models\Recommendation;
 use App\Models\User;
 use App\Models\YouTubeChannel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RecommendationController extends Controller
 {
     public function index()
     {
+        if (Auth::user()->role === 'admin' || Auth::user()->role === 'employee') {
+            $iduser=Auth::user()->id;
+            $user = User::findOrFail($iduser);
+            $user->is_approved = true;
+            $user->save();
+        }
+       
             // تحميل كل الفئات لاستخدامها في العرض إذا لزم الأمر
-            $categories = Category::all();
-        $recommendations = Recommendation::with(['recommendable', 'user', 'product'])->get();
-        return view('backend.recommendations.index', compact('recommendations','categories'));
+        $categories = Category::all();
+        return view('backend.recommendations.index', compact('categories'));
     }
 
-    public function create()
-    {
-        $products = Product::all();
-        $facebookPages = FacebookPage::all();
-        $instagramAccounts = InstagramAccount::all();
-        $youtubeChannels = YouTubeChannel::all();
-        return view('backend.recommendations.create', compact('products', 'facebookPages', 'instagramAccounts', 'youtubeChannels'));
-    }
 
-    public function store(Request $request)
-    {
-        $request->validate([
-            'user_id' => 'required|exists:users,id',
-            'product_id' => 'required|exists:products,id',
-            'recommendable_id' => 'required',
-            'recommendable_type' => 'required|in:FacebookPage,InstagramAccount,YouTubeChannel',
-        ]);
 
-        Recommendation::create($request->all());
 
-        return redirect()->route('recommendations.index')->with('success', 'Recommendation created successfully.');
-    }
 
-    public function show(Recommendation $recommendation)
-    {
-        return view('backend.recommendations.show', compact('recommendation'));
-    }
 
-    public function edit(Recommendation $recommendation)
-    {
-        $products = Product::all();
-        $facebookPages = FacebookPage::all();
-        $instagramAccounts = InstagramAccount::all();
-        $youtubeChannels = YouTubeChannel::all();
-        return view('backend.recommendations.edit', compact('recommendation', 'products', 'facebookPages', 'instagramAccounts', 'youtubeChannels'));
-    }
 
-    public function update(Request $request, Recommendation $recommendation)
-    {
-        $request->validate([
-            'user_id' => 'required|exists:users,id',
-            'product_id' => 'required|exists:products,id',
-            'recommendable_id' => 'required',
-            'recommendable_type' => 'required|in:FacebookPage,InstagramAccount,YouTubeChannel',
-        ]);
 
-        $recommendation->update($request->all());
-
-        return redirect()->route('recommendations.index')->with('success', 'Recommendation updated successfully.');
-    }
-
-    public function destroy(Recommendation $recommendation)
-    {
-        $recommendation->delete();
-        return redirect()->route('recommendations.index')->with('success', 'Recommendation deleted successfully.');
-    }
 
 
 

@@ -1,13 +1,6 @@
 @extends(Auth::user()->can('isEmployee') || Auth::user()->can('isAdmin') ? 'admin.layouts.layout' : 'admin.layouts.layoutvisitor')
 
-
-
-
-
-
 @section('content')
-
-
 <div class="container my-5">
     <h1 class="text-center mb-4">Recommendation Results</h1>
     <a href="{{ route('recommendations.index') }}" class="btn btn-outline-primary mb-4">
