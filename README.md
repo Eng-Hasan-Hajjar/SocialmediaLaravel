@@ -42,6 +42,23 @@
 </p>
 <p align="center">
 
+معلومات المستخدم بوجود سيرياتل كاش.
+
+<img src="interfaces/معلومات المستخدم بوجود سيرياتل كاش.PNG" alt="r">
+
+</p>
+
+
+<p align="center">
+
+معلومات عن الزائر وصورة لدفع عبر الsyriatel cash.
+
+<img src="interfaces/معلومات عن الزائر وصورة لدفع عبر الsyriatel cash.PNG" alt="r">
+
+</p>
+
+<p align="center">
+
 التبوبات الرئيسية في لوحة التحكم للمدير.
 
 
@@ -63,13 +80,7 @@
 
 </p>
 
-<p align="center">
 
-انشاء فئة .
-
-<img src="interfaces/انشاء فئة .PNG" alt="r">
-
-</p>
 <p align="center">
 
 تفااصيل صفحة  الفيس.
@@ -84,13 +95,15 @@
 <img src="interfaces/صفحة المنتج.PNG" alt="r">
 
 </p>
+
 <p align="center">
 
-صفحة انشاء حساب الانستغرام.
+واجهة صفحات الفيس.
 
-<img src="interfaces/صفحة انشاء حساب الانستغرام.PNG" alt="r">
+<img src="interfaces/واجهة صفحات الفيس.PNG" alt="r">
 
 </p>
+
 <p align="center">
 
 قنوات اليوتيوب في الموقع.
@@ -100,29 +113,7 @@
 </p>
 
 
-<p align="center">
 
-مدخلات الخوارزمية.
-
-<img src="interfaces/مدخلات الخوارزمية.PNG" alt="r">
-
-</p>
-<p align="center">
-
-معلومات المستخدم بوجود سيرياتل كاش.
-
-<img src="interfaces/معلومات المستخدم بوجود سيرياتل كاش.PNG" alt="r">
-
-</p>
-
-
-<p align="center">
-
-معلومات عن الزائر وصورة لدفع عبر الsyriatel cash.
-
-<img src="interfaces/معلومات عن الزائر وصورة لدفع عبر الsyriatel cash.PNG" alt="r">
-
-</p>
 <p align="center">
 
 واجهة الفئات.
@@ -132,9 +123,24 @@
 </p>
 <p align="center">
 
+انشاء فئة .
+
+<img src="interfaces/انشاء فئة .PNG" alt="r">
+
+</p>
+
+<p align="center">
+
 واجهة انشاء المنتج من أجل الزبون.
 
 <img src="interfaces/واجهة انشاء المنتج من أجل الزبون.PNG" alt="r">
+
+</p>
+<p align="center">
+
+صفحة انشاء حساب الانستغرام.
+
+<img src="interfaces/صفحة انشاء حساب الانستغرام.PNG" alt="r">
 
 </p>
 <p align="center">
@@ -151,11 +157,12 @@
 <img src="interfaces/واجهة انشاء قناة يوبيتويب.PNG" alt="r">
 
 </p>
+
 <p align="center">
 
-واجهة تسجيل الحساب.
+مدخلات الخوارزمية.
 
-<img src="interfaces/واجهة تسجيل الحساب.PNG" alt="r">
+<img src="interfaces/مدخلات الخوارزمية.PNG" alt="r">
 
 </p>
 <p align="center">
@@ -165,13 +172,7 @@
 <img src="interfaces/واجهة تنفيذ الخوارزمية.PNG" alt="r">
 
 </p>
-<p align="center">
 
-واجهة صفحات الفيس.
-
-<img src="interfaces/واجهة صفحات الفيس.PNG" alt="r">
-
-</p>
 
 
 
